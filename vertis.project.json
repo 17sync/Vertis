@@ -14,8 +14,8 @@
       "Remotes": {
         "$path": "src/remotes"
       },
-      "Packages": {
-        "$path": "src/packages"
+      "Assets": {
+        "$path": "src/assets"
       }
     },
 
