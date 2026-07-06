@@ -8,64 +8,27 @@
     },
 
     "ReplicatedStorage": {
-      "$path": "src/replicatedstorage",
-
-      "Shared": {
-        "$path": "src/replicatedstorage/shared"
-      },
-      "Remotes": {
-        "$path": "src/replicatedstorage/remotes"
-      },
-      "Assets": {
-        "$path": "src/replicatedstorage/assets",
-
-        "Animations": {
-          "$path": "src/replicatedstorage/assets/animations"
-        },
-        "Sounds": {
-          "$path": "src/replicatedstorage/assets/sounds"
-        },
-        "Effects": {
-          "$path": "src/replicatedstorage/assets/effects"
-        },
-        "Models": {
-          "$path": "src/replicatedstorage/assets/models"
-        },
-        "Packages": {
-          "$path": "src/replicatedstorage/packages"
-        }
-      }
+      "$path": "src/replicatedstorage"
     },
 
     "ServerScriptService": {
-      "$path": "src/serverscriptservice",
-
-      "Services": {
-        "$path": "src/serverscriptservice/services"
-      }
+      "$path": "src/serverscriptservice"
     },
 
     "StarterGui": {
       "$path": "src/startergui"
     },
 
-    "StarterPlayer": {
-      "$path": "src/starterplayer",
-
-      "StarterPlayerScripts": {
-        "$path": "src/starterplayer/starterplayerscripts",
-
-        "Controllers": {
-          "$path": "src/starterplayer/starterplayerscripts/controllers"
-        }
-      },
-      "StarterCharacterScripts": {
-        "$path": "src/starterplayer/startercharacterscripts"
-      }
+    "StarterPlayerScripts": {
+      "$path": "src/starterplayerscripts"
     },
 
-     "SoundService": {
-            "$path": "src/soundservice"
+    "StarterCharacterScripts": {
+      "$path": "src/startercharacterscripts"
+    },
+
+    "SoundService": {
+      "$path": "src/soundservice"
     },
 
     "Lighting": {
