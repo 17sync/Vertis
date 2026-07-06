@@ -32,7 +32,7 @@
           "$path": "src/replicatedstorage/assets/models"
         },
         "Packages": {
-          "$path": "src/replicatedstorage/assets/packages"
+          "$path": "src/replicatedstorage/packages"
         }
       }
     },
