@@ -8,33 +8,43 @@
     },
 
     "ReplicatedStorage": {
+      "$path": "src/replicatedstorage",
+
       "Shared": {
-        "$path": "src/shared"
+        "$path": "src/replicatedstorage/shared"
       },
       "Remotes": {
-        "$path": "src/remotes"
+        "$path": "src/replicatedstorage/remotes"
       },
       "Assets": {
-        "$path": "src/assets"
+        "$path": "src/replicatedstorage/assets"
       }
     },
 
     "ServerScriptService": {
-      "Server": {
-        "$path": "src/server"
+      "$path": "src/serverscriptservice",
+
+      "Services": {
+        "$path": "src/serverscriptservice/services"
       }
     },
 
     "StarterGui": {
-      "$path": "src/gui"
+      "$path": "src/startergui"
     },
 
     "StarterPlayer": {
+      "$path": "src/starterplayer",
+
       "StarterPlayerScripts": {
-        "$path": "src/client"
+        "$path": "src/starterplayer/starterplayerscripts",
+
+        "Controllers": {
+          "$path": "src/starterplayer/starterplayerscripts/controllers"
+        }
       },
       "StarterCharacterScripts": {
-        "$path": "src/character"
+        "$path": "src/starterplayer/startercharacterscripts"
       }
     },
 
