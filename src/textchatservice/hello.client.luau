@@ -1,1 +1,0 @@
-print("Hello World, from sound text chat service!")

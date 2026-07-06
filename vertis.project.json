@@ -36,10 +36,6 @@
     "SoundService": {
       "$path": "src/soundservice"
     },
-
-    "TextChatService": {
-      "$path": "src/textchatservice"
-    },
     
     "Lighting": {
       "$properties": {
