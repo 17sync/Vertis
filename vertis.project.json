@@ -30,6 +30,9 @@
         },
         "Models": {
           "$path": "src/replicatedstorage/assets/models"
+        },
+        "Packages": {
+          "$path": "src/replicatedstorage/assets/packages"
         }
       }
     },
@@ -59,6 +62,10 @@
       "StarterCharacterScripts": {
         "$path": "src/starterplayer/startercharacterscripts"
       }
+    },
+
+     "SoundService": {
+            "$path": "src/soundservice"
     },
 
     "Lighting": {
