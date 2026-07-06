@@ -17,7 +17,20 @@
         "$path": "src/replicatedstorage/remotes"
       },
       "Assets": {
-        "$path": "src/replicatedstorage/assets"
+        "$path": "src/replicatedstorage/assets",
+
+        "Animations": {
+          "$path": "src/replicatedstorage/assets/animations"
+        },
+        "Sounds": {
+          "$path": "src/replicatedstorage/assets/sounds"
+        },
+        "Effects": {
+          "$path": "src/replicatedstorage/assets/effects"
+        },
+        "Models": {
+          "$path": "src/replicatedstorage/assets/models"
+        }
       }
     },
 
