@@ -15,22 +15,32 @@
       "$path": "src/serverscriptservice"
     },
 
+    "ServerStorage": {
+      "$path": "src/serverstorage"
+    },
+
     "StarterGui": {
       "$path": "src/startergui"
     },
 
-    "StarterPlayerScripts": {
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
       "$path": "src/starterplayerscripts"
-    },
+      },
 
-    "StarterCharacterScripts": {
+      "StarterCharacterScripts": {
       "$path": "src/startercharacterscripts"
+      }
     },
-
+    
     "SoundService": {
       "$path": "src/soundservice"
     },
 
+    "TextChatService": {
+      "$path": "src/textchatservice"
+    },
+    
     "Lighting": {
       "$properties": {
         "Ambient": [0, 0, 0],
