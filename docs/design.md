@@ -6,7 +6,8 @@ The camera should help the player anticipate jumps without revealing too much of
 
 ## Design Principles
 ```
-- Smooth follow
+- Shows whole stage
+- Fixed at stage, does not follow player.
 - Fixed zoom
 - Hortizontal centering
 - No rotation
