@@ -1,10 +1,10 @@
 <p style="text-align:center">The purpose of this document is to define the type of experience I'm trying to create with Vertis by describing different aspects of the game through clear cut design principles.</p>
 
-## Camera
+# Camera
 
 The camera should help the player anticipate jumps without revealing too much of the level.
 
-### Design Principles
+## Design Principles
 ```
 - Smooth follow
 - Fixed zoom
@@ -14,21 +14,19 @@ The camera should help the player anticipate jumps without revealing too much of
 - No cinematic movement
 ```
 
-### Reasoning
+## Reasoning
 
 Since Vertis is focused on precision platforming, the player should always have enough information to plan their next jump while still being punished for mistakes. The camera should never become an obstacle, but it also shouldn't remove the challenge by revealing too much of the level.
 
----
-
-## Movement
+# Movement
 
 Movement should feel deliberate, predictable, and entirely skill-based. Every successful jump should be the result of player execution rather than luck. Likewise, every failed jump should feel like a mistake the player can recognize and learn from.
 
-### Philosophy
+## Philosophy
 
 Movement is the primary gameplay mechanic. The player never becomes stronger through upgrades or abilities. Progression comes from improving mechanical skill and understanding the game's physics. The controls should be simple to learn but difficult to master.
 
-### Design Principles
+## Design Principles
 ```
 - Input should always produce consistent results.
 - Responsive.
@@ -38,35 +36,35 @@ Movement is the primary gameplay mechanic. The player never becomes stronger thr
 - Rewards patience.
 ```
 
-### Mechanics
+## Mechanics
 
-#### Horizontal Movement
+### Horizontal Movement
 
 The player can move freely left and right while grounded.
 
 Horizontal movement should feel responsive and allow precise positioning before attempting a jump.
 
-#### Jump Charging
+### Jump Charging
 
 Holding the jump button charges the player's jump. The duration of the charge determines the jump's strength. The player must decide when to release the jump, introducing risk and commitment to every attempt.
 
-#### Air Control
+### Air Control
 
 Air control should be minimal.
 
 The player should only be able to make slight adjustments while airborne. Once a jump has been committed, the trajectory should largely be determined by the initial charge and direction.
 
-#### Landing
+### Landing
 
 Landing should feel impactful.
 
 A brief recovery animation reinforces the weight of the character without making the controls feel sluggish.
 
-#### Falling
+### Falling
 
 Falling is a natural part of progression. Recovering from failure should be part of the gameplay loop rather than a punishment to avoid.
 
-### Player Experience
+## Player Experience
 
 The player should feel:
 ```
@@ -77,7 +75,7 @@ The player should feel:
 - Motivated to improve after every failure.
 ```
 
-### Future Considerations
+## Future Considerations
 
 Potential mechanics to explore later:
 ```
