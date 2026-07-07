@@ -6,13 +6,14 @@ The camera should help the player anticipate jumps without revealing too much of
 
 ## Design Principles
 ```
-- Shows whole stage
+- Shows whole stage.
 - Fixed at stage, does not follow player.
-- Fixed zoom
-- Hortizontal centering
-- No rotation
-- Slight vertical bias
-- No cinematic movement
+- Fixed zoom.
+- Hortizontal centering.
+- No rotation.
+- Slight vertical bias.
+- Give close to 2D feel with minimal 3D element.
+- No cinematic movement.
 ```
 
 ## Reasoning
