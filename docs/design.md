@@ -22,7 +22,7 @@ Since Vertis is focused on precision platforming, the player should always have 
 
 # Movement
 
-Movement should feel deliberate, predictable, and entirely skill-based. Every successful jump should be the result of player execution rather than luck. Likewise, every failed jump should feel like a mistake the player can recognize and learn from.
+Movement should feel deliberate, predictable, and entirely skill-based. Every successful jump should be the result of player execution rather than luck. Likewise, every failed jump should feel like a mistake the player can recognize and learn from. 
 
 ## Philosophy
 
@@ -30,6 +30,7 @@ Movement is the primary gameplay mechanic. The player never becomes stronger thr
 
 ## Design Principles
 ```
+- Player should not be able to move in the z-direction.
 - Input should always produce consistent results.
 - Responsive.
 - Not overly forgiving.
