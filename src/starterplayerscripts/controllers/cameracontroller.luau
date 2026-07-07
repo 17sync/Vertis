@@ -2,8 +2,10 @@ local runService=game:GetService("RunService")
 local players=game:GetService("Players")
 
 local cameraController={}
-local cameraPosition=Vector3.new(0, 50, -120)
-local cameraTarget=Vector3.new(0, 50, 0)
+
+local visibleHeight=70
+local fieldOfView=30
+local cameraTarget=Vector3.new(0, 0, 0)
 
 local localPlayer=players.LocalPlayer
 local camera=nil
@@ -17,14 +19,18 @@ function cameraController:init()
 
     camera=game.Workspace.CurrentCamera
     camera.CameraType=Enum.CameraType.Scriptable
-    camera.FieldOfView=30
+    camera.FieldOfView=fieldOfView
 
     rootPart=character:WaitForChild("HumanoidRootPart")
 
-    self:setCamera(cameraPosition, cameraTarget)
-end
+    self:setCamera(cameraTarget)
+end 
 
-function cameraController:setCamera(position:Vector3, target:Vector3)
+function cameraController:setCamera(target:Vector3)
+    local distance=(visibleHeight/2) / math.tan(math.rad(fieldOfView/2))
+    
+    local position=target + Vector3.new(0, 0, -distance)
+
     camera.CFrame=CFrame.lookAt(position, target)
 end
 
