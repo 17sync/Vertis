@@ -40,9 +40,7 @@ Movement is the primary gameplay mechanic. The player never becomes stronger thr
 
 ### Horizontal Movement
 
-The player can move freely left and right while grounded.
-
-Horizontal movement should feel responsive and allow precise positioning before attempting a jump.
+The player can move freely left and right while grounded. Horizontal movement should feel responsive and allow precise positioning before attempting a jump.
 
 ### Jump Charging
 
@@ -50,15 +48,11 @@ Holding the jump button charges the player's jump. The duration of the charge de
 
 ### Air Control
 
-Air control should be minimal.
-
-The player should only be able to make slight adjustments while airborne. Once a jump has been committed, the trajectory should largely be determined by the initial charge and direction.
+Air control should be minimal. The player should only be able to make slight adjustments while airborne. Once a jump has been committed, the trajectory should largely be determined by the initial charge and direction.
 
 ### Landing
 
-Landing should feel impactful.
-
-A brief recovery animation reinforces the weight of the character without making the controls feel sluggish.
+Landing should feel impactful. A brief recovery animation reinforces the weight of the character without making the controls feel sluggish.
 
 ### Falling
 
