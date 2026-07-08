@@ -13,13 +13,15 @@ local world=nil
 local planeAnchor=nil
 local planeAttachment=nil
 
-local moveDirection={
+local movementDirection={
     left=false,
     right=false
 }
 local movementSettings={
-    walkSpeed=14
+    walkSpeed=14,
+    rotationSpeed=12
 }
+local facingDirection=1             -- 1=left, -1=right
 
 function movementController:init()
     print("movementController initialized")
@@ -67,34 +69,58 @@ function movementController:bindInput()
         end
 
         if input.KeyCode==Enum.KeyCode.A then
-            moveDirection.left=true
+            movementDirection.left=true
         elseif input.KeyCode==Enum.KeyCode.D then
-            moveDirection.right=true
+            movementDirection.right=true
         end
     end)
 
     userInputService.InputEnded:Connect(function(input)
         if input.KeyCode==Enum.KeyCode.A then
-            moveDirection.left=false
+            movementDirection.left=false
         elseif input.KeyCode==Enum.KeyCode.D then
-            moveDirection.right=false
+            movementDirection.right=false
         end
     end)
 end
 
 function movementController:getMoveDirection()
-    if moveDirection.left and not moveDirection.right then return 1
-    elseif moveDirection.right and not moveDirection.left then return -1
+    if movementDirection.left and not movementDirection.right then return 1
+    elseif movementDirection.right and not movementDirection.left then return -1
     else return 0
     end 
 end
 
-function movementController:update(dt)
+function movementController:updateMovement(dt)
     local root=rootPart
     local velocity=root.AssemblyLinearVelocity
     local direction=self:getMoveDirection()
 
     root.AssemblyLinearVelocity=Vector3.new(direction*movementSettings.walkSpeed, velocity.Y, velocity.Z)
+end
+
+function movementController:updateRotation(dt)
+    local direction=self:getMoveDirection()
+    local targetYaw=nil
+
+    if direction==0 then return
+    end
+
+    if direction==1 then targetYaw=math.rad(-90)
+    else targetYaw=math.rad(90)
+    end
+
+    local root=rootPart
+    local position=root.Position
+
+    local targetCFrame=CFrame.new(position) * CFrame.Angles(0, targetYaw, 0)
+
+    root.CFrame=root.CFrame:Lerp(targetCFrame, dt*movementSettings.rotationSpeed)
+end
+
+function movementController:update(dt)
+    self:updateMovement(dt)
+    self:updateRotation(dt)
 end
 
 return movementController
