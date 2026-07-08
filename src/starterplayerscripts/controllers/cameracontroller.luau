@@ -14,6 +14,7 @@ local rootPart=nil
 
 function cameraController:init()
     print("cameraController initialized")
+    
     character=localPlayer.Character or localPlayer.CharacterAdded:Wait()
     character:WaitForChild("Humanoid")
 
