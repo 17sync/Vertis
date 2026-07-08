@@ -1,4 +1,5 @@
 local runService=game:GetService("RunService")
+local userInputService=game:GetService("UserInputService")
 local players=game:GetService("Players")
 
 local movementController={}
@@ -12,6 +13,11 @@ local world=nil
 local planeAnchor=nil
 local planeAttachment=nil
 
+local moveDirection=0           -- -1 = left, 0 = standing, 1 = right
+local movementSettings={
+    walkSpeed=14
+}
+
 function movementController:init()
     print("movementController initialized")
     
@@ -21,9 +27,15 @@ function movementController:init()
 
     humanoid.JumpPower=0
     humanoid.UseJumpPower=true
+    humanoid.AutoRotate=false
     humanoid.WalkSpeed=0
 
     self:createPlaneConstraint()
+    self:bindInput()
+
+    runService.Heartbeat:Connect(function(dt)
+        self:update(dt)
+    end)
 end
 
 function movementController:createPlaneConstraint()
@@ -43,6 +55,35 @@ function movementController:createPlaneConstraint()
     constraint.Enabled=true
 
     constraint.Parent=rootPart
+end
+
+function movementController:bindInput()
+    userInputService.InputBegan:Connect(function(input, gameProcessed)
+        if gameProcessed then
+            return
+        end
+
+        if input.KeyCode==Enum.KeyCode.A then
+            moveDirection=-1
+        elseif input.KeyCode==Enum.KeyCode.D then
+            moveDirection=1
+        end
+    end)
+
+    userInputService.InputEnded:Connect(function(input)
+        if input.KeyCode==Enum.KeyCode.A then
+            moveDirection=0
+        elseif input.KeyCode==Enum.KeyCode.D then
+            moveDirection=0
+        end
+    end)
+end
+
+function movementController:update(dt)
+    local root=rootPart
+    local velocity=root.AssemblyLinearVelocity
+
+    root.AssemblyLinearVelocity=Vector3.new(moveDirection * movementSettings.walkSpeed, velocity.Y, velocity.Z)
 end
 
 return movementController
