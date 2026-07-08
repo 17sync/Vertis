@@ -13,12 +13,22 @@ local world=nil
 local planeAnchor=nil
 local planeAttachment=nil
 
+local states={
+    idle="Idle",
+    walking="Walking",
+    charging="Charging",
+    jumping="Jumping",
+    falling="Falling",
+    landing="Landing",
+}
+local currentState
+
 local movementDirection={
     left=false,
     right=false
 }
 local movementSettings={
-    walkSpeed=14,
+    walkSpeed=12,
     rotationSpeed=12
 }
 local facingDirection=1             -- 1=left, -1=right
@@ -43,6 +53,14 @@ function movementController:init()
     end)
 end
 
+function movementController:setState(state)
+    if currentState==state then return
+    end
+
+    currentState=state
+    print("State: ", state)
+end
+
 function movementController:createPlaneConstraint()
     world=game.Workspace:WaitForChild("world")
     planeAnchor=world:WaitForChild("planeanchor")
@@ -56,7 +74,6 @@ function movementController:createPlaneConstraint()
 
     constraint.Attachment0=rootAttachment
     constraint.Attachment1=planeAttachment
-
     constraint.Enabled=true
 
     constraint.Parent=rootPart
