@@ -83,8 +83,8 @@ function movementController:bindInput()
 end
 
 function movementController:getMoveDirection()
-    if moveDirection.left and not moveDirection.right then return -1
-    elseif moveDirection.right and not moveDirection.left then return 1
+    if moveDirection.left and not moveDirection.right then return 1
+    elseif moveDirection.right and not moveDirection.left then return -1
     else return 0
     end 
 end
