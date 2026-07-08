@@ -1,7 +1,7 @@
 # Vertis Roadmap
 
 ## v0.1 — Core Prototype
-- [ ] Core movement
+- [x] Core movement
 - [ ] Jump charging
 - [x] Camera
 
