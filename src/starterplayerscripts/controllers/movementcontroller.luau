@@ -13,7 +13,10 @@ local world=nil
 local planeAnchor=nil
 local planeAttachment=nil
 
-local moveDirection=0           -- -1 = left, 0 = standing, 1 = right
+local moveDirection={
+    left=false,
+    right=false
+}
 local movementSettings={
     walkSpeed=14
 }
@@ -64,26 +67,34 @@ function movementController:bindInput()
         end
 
         if input.KeyCode==Enum.KeyCode.A then
-            moveDirection=-1
+            moveDirection.left=true
         elseif input.KeyCode==Enum.KeyCode.D then
-            moveDirection=1
+            moveDirection.right=true
         end
     end)
 
     userInputService.InputEnded:Connect(function(input)
         if input.KeyCode==Enum.KeyCode.A then
-            moveDirection=0
+            moveDirection.left=false
         elseif input.KeyCode==Enum.KeyCode.D then
-            moveDirection=0
+            moveDirection.right=false
         end
     end)
+end
+
+function movementController:getMoveDirection()
+    if moveDirection.left and not moveDirection.right then return -1
+    elseif moveDirection.right and not moveDirection.left then return 1
+    else return 0
+    end 
 end
 
 function movementController:update(dt)
     local root=rootPart
     local velocity=root.AssemblyLinearVelocity
+    local direction=self:getMoveDirection()
 
-    root.AssemblyLinearVelocity=Vector3.new(moveDirection * movementSettings.walkSpeed, velocity.Y, velocity.Z)
+    root.AssemblyLinearVelocity=Vector3.new(direction*movementSettings.walkSpeed, velocity.Y, velocity.Z)
 end
 
 return movementController
