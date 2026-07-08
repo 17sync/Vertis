@@ -23,13 +23,15 @@ local states={
 }
 local currentState
 
+local grounded=false
 local movementDirection={
     left=false,
     right=false
 }
 local movementSettings={
     walkSpeed=12,
-    rotationSpeed=12
+    rotationSpeed=12,
+    groundCheckDistance=3
 }
 local facingDirection=1             -- 1=left, -1=right
 
