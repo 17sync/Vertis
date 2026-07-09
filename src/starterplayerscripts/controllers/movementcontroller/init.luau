@@ -68,7 +68,8 @@ function movementController:init()
     data.humanoid.WalkSpeed=0
 
     self:createPlaneConstraint()
-    self:bindInput()
+    input:init(self)
+    input:bindInput()
 
     runService.Heartbeat:Connect(function(dt)
         self:update(dt)
@@ -105,45 +106,12 @@ function movementController:createPlaneConstraint()
     constraint.Parent=data.rootPart
 end
 
-function movementController:bindInput()
-    local data=self.data
-    
-    userInputService.InputBegan:Connect(function(input, gameProcessed)
-        if gameProcessed then
-            return
-        end
-
-        if input.KeyCode==Enum.KeyCode.A then
-            data.movementDirection.left=true
-        elseif input.KeyCode==Enum.KeyCode.D then
-            data.movementDirection.right=true
-        end
-    end)
-
-    userInputService.InputEnded:Connect(function(input)
-        if input.KeyCode==Enum.KeyCode.A then
-            data.movementDirection.left=false
-        elseif input.KeyCode==Enum.KeyCode.D then
-            data.movementDirection.right=false
-        end
-    end)
-end
-
-function movementController:getMoveDirection()
-    local data=self.data
-
-    if data.movementDirection.left and not data.movementDirection.right then return 1
-    elseif data.movementDirection.right and not data.movementDirection.left then return -1
-    else return 0
-    end 
-end
-
 function movementController:updateMovement(dt)
     local data=self.data
 
     local root=data.rootPart
     local velocity=root.AssemblyLinearVelocity
-    local direction=self:getMoveDirection()
+    local direction=input:getMoveDirection()
 
     root.AssemblyLinearVelocity=Vector3.new(direction*data.movementSettings.walkSpeed, velocity.Y, velocity.Z)
 end
@@ -151,7 +119,7 @@ end
 function movementController:updateRotation(dt)
     local data=self.data
 
-    local direction=self:getMoveDirection()
+    local direction=input:getMoveDirection()
     local targetYaw=nil
 
     if direction==0 then return

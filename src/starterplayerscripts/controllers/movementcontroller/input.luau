@@ -1,7 +1,41 @@
-local module = {}
+local userInputService=game:GetService("UserInputService")
+local input={}
 
-function module:init(controller)
+local controller
+local data
 
+function input:init(parent)
+    controller=parent
+    data=parent.data
 end
 
-return module
+function input:bindInput()
+    userInputService.InputBegan:Connect(function(input, gameProcessed)
+        if gameProcessed then
+            return
+        end
+
+        if input.KeyCode==Enum.KeyCode.A then
+            data.movementDirection.left=true
+        elseif input.KeyCode==Enum.KeyCode.D then
+            data.movementDirection.right=true
+        end
+    end)
+
+    userInputService.InputEnded:Connect(function(input)
+        if input.KeyCode==Enum.KeyCode.A then
+            data.movementDirection.left=false
+        elseif input.KeyCode==Enum.KeyCode.D then
+            data.movementDirection.right=false
+        end
+    end)
+end
+
+function input:getMoveDirection()
+    if data.movementDirection.left and not data.movementDirection.right then return 1
+    elseif data.movementDirection.right and not data.movementDirection.left then return -1
+    else return 0
+    end 
+end
+
+return input
