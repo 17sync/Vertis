@@ -70,22 +70,16 @@ function movementController:init()
     self:createPlaneConstraint()
     input:init(self)
     movement:init(self)
+    rotation:init(self)
+    states:init(self)
+    grounding:init(self)
+    jumping:init(self)
 
     input:bindInput()
 
     runService.Heartbeat:Connect(function(dt)
         self:update(dt)
     end)
-end
-
-function movementController:setState(state)
-    local data=self.data
-
-    if data.currentState==state then return
-    end
-
-    data.currentState=state
-    print("State: ", state)
 end
 
 function movementController:createPlaneConstraint()
@@ -108,30 +102,9 @@ function movementController:createPlaneConstraint()
     constraint.Parent=data.rootPart
 end
 
-function movementController:updateRotation(dt)
-    local data=self.data
-
-    local direction=input:getMoveDirection()
-    local targetYaw=nil
-
-    if direction==0 then return
-    end
-
-    if direction==1 then targetYaw=math.rad(-90)
-    else targetYaw=math.rad(90)
-    end
-
-    local root=data.rootPart
-    local position=root.Position
-
-    local targetCFrame=CFrame.new(position) * CFrame.Angles(0, targetYaw, 0)
-
-    root.CFrame=root.CFrame:Lerp(targetCFrame, dt*data.movementSettings.rotationSpeed)
-end
-
 function movementController:update(dt)
     movement:updateMovement(dt)
-    self:updateRotation(dt)
+    rotation:updateRotation(dt)
 end
 
 return movementController

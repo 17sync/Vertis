@@ -1,7 +1,11 @@
-local module = {}
+local jumping={}
 
-function module:init(controller)
+local controller
+local data
 
+function jumping:init(parent)
+    controller=parent
+    data=parent.data
 end
 
-return module
+return jumping

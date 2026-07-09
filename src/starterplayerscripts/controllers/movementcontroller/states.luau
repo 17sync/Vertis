@@ -1,7 +1,19 @@
-local module = {}
+local states={}
 
-function module:init(controller)
+local controller
+local data
 
+function states:init(parent)
+    controller=parent
+    data=parent.data
 end
 
-return module
+function states:setState(state)
+    if data.currentState==state then return
+    end
+
+    data.currentState=state
+    print("State: ", state)
+end
+
+return states

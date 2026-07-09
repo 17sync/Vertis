@@ -1,7 +1,11 @@
-local module = {}
+local grounding={}
 
-function module:init(controller)
+local controller
+local data
 
+function grounding:init(parent)
+    controller=parent
+    data=parent.data
 end
 
-return module
+return grounding
