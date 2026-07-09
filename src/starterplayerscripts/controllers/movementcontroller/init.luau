@@ -69,6 +69,8 @@ function movementController:init()
 
     self:createPlaneConstraint()
     input:init(self)
+    movement:init(self)
+
     input:bindInput()
 
     runService.Heartbeat:Connect(function(dt)
@@ -106,16 +108,6 @@ function movementController:createPlaneConstraint()
     constraint.Parent=data.rootPart
 end
 
-function movementController:updateMovement(dt)
-    local data=self.data
-
-    local root=data.rootPart
-    local velocity=root.AssemblyLinearVelocity
-    local direction=input:getMoveDirection()
-
-    root.AssemblyLinearVelocity=Vector3.new(direction*data.movementSettings.walkSpeed, velocity.Y, velocity.Z)
-end
-
 function movementController:updateRotation(dt)
     local data=self.data
 
@@ -138,7 +130,7 @@ function movementController:updateRotation(dt)
 end
 
 function movementController:update(dt)
-    self:updateMovement(dt)
+    movement:updateMovement(dt)
     self:updateRotation(dt)
 end
 
