@@ -8,8 +8,24 @@ function jumping:init(parent)
     data=parent.data
 end
 
+function jumping:performJump()
+    local jumpSettings=data.jumpSettings
+    local jumpData=data.jumpData
+
+    local jumpPower=jumpSettings.minJumpPower + (jumpSettings.maxJumpPower - jumpSettings.minJumpPower) * jumpData.chargeAlpha
+    local angle=math.rad(jumpSettings.jumpAngle)
+    
+    local horizontal=math.cos(angle)*jumpPower
+    local vertical=math.sin(angle)*jumpPower
+
+    horizontal*=data.facingDirection
+    data.rootPart.AssemblyLinearVelocity=Vector3.new(horizontal, vertical, 0)
+end
+
 function jumping:startCharging()
-    if data.jumpData.charging then
+    if not data.grounded then
+        return
+    elseif data.jumpData.charging then
         return
     end
 
@@ -38,7 +54,10 @@ function jumping:releaseJump()
 
     data.jumpData.charging=false
     print("released jump")
-    print(string.format("charge strength = %.2f", data.jumpData.chargeAlpha))
+
+    self:performJump()
+    data.jumpData.chargeTime=0
+    data.jumpData.chargeAlpha=0
 end
 
 return jumping
