@@ -56,9 +56,9 @@ movementController.data={
 
     -- Jumping
     jumpSettings={
-        minJumpPower=25,
-        maxJumpPower=90,
-        maxChargeTime=1.2,
+        minJumpPower=100,
+        maxJumpPower=150,
+        maxChargeTime=1.0,
         recoveryTime=0.15,
         jumpAngle=55
     },
@@ -118,7 +118,9 @@ function movementController:createPlaneConstraint()
     constraint.Parent=data.rootPart
 end
 
+-- main loop
 function movementController:update(dt)
+    self.modules.grounding:update()
     self.modules.jumping:update(dt)
     self.modules.movement:updateMovement(dt)
     self.modules.rotation:updateRotation(dt)
