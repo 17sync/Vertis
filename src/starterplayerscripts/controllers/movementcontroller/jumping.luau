@@ -42,22 +42,39 @@ function jumping:update(dt)
     local jumpData=data.jumpData
     local jumpSettings=data.jumpSettings
 
-    jumpData.chargeTime=math.min(jumpData.chargeTime + dt, jumpSettings.maxChargeTime)
+    jumpData.chargeTime+=dt
+
+    if jumpData.chargeTime>=jumpSettings.maxChargeTime then
+        jumpData.chargeTime=jumpSettings.maxChargeTime
+        print(string.format("charge= %.2f", jumpData.chargeAlpha))
+        jumpData.chargeAlpha=1
+
+        self:releaseJump()
+        return
+    end
+
     jumpData.chargeAlpha=jumpData.chargeTime/jumpSettings.maxChargeTime
-    print(string.format("charge= %.2f", jumpData.chargeAlpha))
+end
+
+function jumping:resetCharge()
+    local jumpData=data.jumpData
+    
+    jumpData.charging=false
+    jumpData.chargeTime=0
+    jumpData.chargeAlpha=0
 end
 
 function jumping:releaseJump()
     if not data.jumpData.charging then 
         return
     end
-
-    data.jumpData.charging=false
+    
+    local jumpData=data.jumpData
+    jumpData.chargeAlpha = math.clamp(jumpData.chargeAlpha, 0, 1)
     print("released jump")
 
     self:performJump()
-    data.jumpData.chargeTime=0
-    data.jumpData.chargeAlpha=0
+    self:resetCharge()
 end
 
 return jumping
