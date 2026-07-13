@@ -51,22 +51,24 @@ Each controller or service should have one clearly defined responsibility (loose
 
 Client-side gameplay systems are managed through controllers. boostrap.client.luau acts as the bootstrapper. Its responsibilities are:
 ```
-- Loading controllers
-- Initializing gameplay systems
+- Initialize controllers
+- Require gameplay systems
 - Defining initialization order
+- Serve as client entry point
 ```
 Gameplay logic should not exist inside the bootstrapper itself.
 
 # Controller Pattern
 
-Gameplay systems are implemented as ModuleScripts rather than multiple LocalScripts.
+Each gameplay system has it's own controller which are then furhter divided into smaller modules with a single responisiblity.
 
-Example:
+For Example:
 ```
-CameraController
-├── Init()
-├── SetCamera()
-└── ...
+MovementController
+├── init.luau
+├── input.luau
+├── movement.luau
+└── ... and so on
 ```
 This leads to:
 ```
@@ -78,7 +80,7 @@ This leads to:
 
 # Camera System
 
-The camera is entirely client-side. Roblox's default camera controller is disabled by setting the camera type to `Scriptable`. The camera is currently static.
+The camera is entirely client-side. Roblox's default camera controller is disabled by setting the camera type to `Scriptable`.
 
 Responsibilities:
 ```
@@ -86,11 +88,12 @@ Responsibilities:
 - Position the camera
 - Orient the camera
 - Configure camera properties
+- Maintain a fixed stage view
 ```
 
 # Camera Philosophy
 
-Vertis is inspired by Jump King. Rather than continuously following the player, the game is divided into fixed camera screens. Each screen represents a self-contained gameplay challenge. This design keeps platforming precise while allowing level design to control player visibility.
+Rather than continuously following the player, the game is divided into fixed camera screens. Each screen represents a self-contained gameplay challenge. This design keeps platforming precise while allowing level design to control player visibility.
 
 ---
 
@@ -141,14 +144,6 @@ Future versions may replace the default R6 avatar with a custom StarterCharacter
 # Future Systems
 
 Planned gameplay systems include:
-
-### Movement
-```
-- Jump charging
-- Landing
-- Recovery
-- Air movement
-```
 
 ### Game Systems
 ```
