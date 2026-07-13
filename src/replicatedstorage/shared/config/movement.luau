@@ -46,7 +46,8 @@ data={
         minJumpPower=25,
         maxJumpPower=90,
         maxChargeTime=1.2,
-        recoveryTime=0.15
+        recoveryTime=0.15,
+        jumpAngle=45
     },
     jumpData={
         charging=false,
