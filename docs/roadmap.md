@@ -2,7 +2,7 @@
 
 ## v0.1 — Core Prototype
 - [x] Core movement
-- [ ] Jump charging
+- [x] Jump charging
 - [x] Camera
 
 ---
