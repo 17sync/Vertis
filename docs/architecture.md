@@ -126,7 +126,6 @@ Each zone will define:
 - Camera Target
 - Visible Area
 ```
-
 # Movement Architecture
 
 Movement is implemented using a modular controller composed of specialized smaller systems each handling a single aspect of the player movement.
