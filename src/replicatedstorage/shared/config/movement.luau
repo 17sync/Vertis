@@ -1,8 +1,10 @@
+-- nil means defined in method that makes use of it
+
 data={
 
     -- Player
     localPlayer=game.GetService("Players").LocalPlayer,
-    character=nil,
+    character=nil,                 
     humanoid=nil,
     rootPart= nil,
 
