@@ -59,12 +59,13 @@ movementController.data={
         minJumpPower=25,
         maxJumpPower=90,
         maxChargeTime=1.2,
-        recoveryTime=0.15
+        recoveryTime=0.15,
+        jumpAngle=55
     },
     jumpData={
         charging=false,
         chargeTime=0,
-        chargeAlpha=0
+        chargeAlpha=0,
     }
 }
 
