@@ -19,6 +19,8 @@ function input:bindInput()
             data.movementDirection.left=true
         elseif input.KeyCode==Enum.KeyCode.D then
             data.movementDirection.right=true
+        elseif input.KeyCode==Enum.KeyCode.Space then
+            controller.modules.jumping:startCharging()
         end
     end)
 
@@ -27,6 +29,8 @@ function input:bindInput()
             data.movementDirection.left=false
         elseif input.KeyCode==Enum.KeyCode.D then
             data.movementDirection.right=false
+        elseif input.KeyCode==Enum.KeyCode.Space then
+            controller.modules.jumping:releaseJump()
         end
     end)
 end
