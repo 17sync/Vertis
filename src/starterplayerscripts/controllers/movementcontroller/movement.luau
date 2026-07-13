@@ -10,6 +10,11 @@ function movement:init(parent)
 end
 
 function movement:updateMovement(dt)
+    if data.jumpData.charging then
+        data.rootPart.AssemblyLinearVelocity=Vector3.new(0, data.rootPart.AssemblyLinearVelocity.Y, 0)
+        return
+    end
+    
     local root=data.rootPart
     local velocity=root.AssemblyLinearVelocity
     local direction=input:getMoveDirection()
