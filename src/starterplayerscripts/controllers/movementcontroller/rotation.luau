@@ -10,6 +10,10 @@ function rotation:init(parent)
 end
 
 function rotation:updateRotation(dt)
+    if data.jumpData.charging then
+        return 
+    end
+
     local direction=input:getMoveDirection()
     local targetYaw=nil
 
