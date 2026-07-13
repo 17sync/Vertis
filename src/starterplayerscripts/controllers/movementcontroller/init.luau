@@ -4,12 +4,14 @@ local players=game:GetService("Players")
 
 local movementController={}
 
-local input = require(script.input)
-local movement = require(script.movement)
-local rotation = require(script.rotation)
-local states = require(script.states)
-local grounding = require(script.grounding)
-local jumping = require(script.jumping)
+movementController.modules={
+    input = require(script.input),
+    movement = require(script.movement),
+    rotation = require(script.rotation),
+    states = require(script.states),
+    grounding = require(script.grounding),
+    jumping = require(script.jumping)
+}
 
 movementController.data={
 
@@ -50,7 +52,20 @@ movementController.data={
     },
 
     -- Character
-    facingDirection=1
+    facingDirection=1,
+
+    -- Jumping
+    jumpSettings={
+        minJumpPower=25,
+        maxJumpPower=90,
+        maxChargeTime=1.2,
+        recoveryTime=0.15
+    },
+    jumpData={
+        charging=false,
+        chargeTime=0,
+        chargeAlpha=0
+    }
 }
 
 function movementController:init()
@@ -68,14 +83,14 @@ function movementController:init()
     data.humanoid.WalkSpeed=0
 
     self:createPlaneConstraint()
-    input:init(self)
-    movement:init(self)
-    rotation:init(self)
-    states:init(self)
-    grounding:init(self)
-    jumping:init(self)
+    self.modules.input:init(self)
+    self.modules.movement:init(self)
+    self.modules.rotation:init(self)
+    self.modules.states:init(self)
+    self.modules.grounding:init(self)
+    self.modules.jumping:init(self)
 
-    input:bindInput()
+    self.modules.input:bindInput()
 
     runService.Heartbeat:Connect(function(dt)
         self:update(dt)
@@ -103,8 +118,8 @@ function movementController:createPlaneConstraint()
 end
 
 function movementController:update(dt)
-    movement:updateMovement(dt)
-    rotation:updateRotation(dt)
+    self.modules.movement:updateMovement(dt)
+    self.modules.rotation:updateRotation(dt)
 end
 
 return movementController
