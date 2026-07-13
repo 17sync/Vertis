@@ -15,9 +15,17 @@ src
 │   └── services
 │
 ├── starterplayerscripts
-│   ├── Client.client.luau
+│   ├── bootstrap.client.luau
 │   └── controllers
-│       └── CameraController.luau
+│       ├── cameracontroller.luau
+│       └── movementcontroller
+│           ├── init.luau
+│           ├── input.luau
+│           ├── movement.luau
+│           ├── rotation.luau
+│           ├── grounding.luau
+│           ├── states.luau
+│           └── jumping.luau
 │
 ├── startercharacterscripts
 ├── startergui
@@ -41,7 +49,7 @@ Each controller or service should have one clearly defined responsibility (loose
 
 # Client Architecture
 
-Client-side gameplay systems are managed through controllers. Client.client.luau acts as the bootstrapper. Its responsibilities are:
+Client-side gameplay systems are managed through controllers. boostrap.client.luau acts as the bootstrapper. Its responsibilities are:
 ```
 - Loading controllers
 - Initializing gameplay systems
