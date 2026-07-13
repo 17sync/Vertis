@@ -118,6 +118,7 @@ function movementController:createPlaneConstraint()
 end
 
 function movementController:update(dt)
+    self.modules.jumping:update(dt)
     self.modules.movement:updateMovement(dt)
     self.modules.rotation:updateRotation(dt)
 end
