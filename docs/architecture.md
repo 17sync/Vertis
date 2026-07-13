@@ -75,7 +75,10 @@ This leads to:
 - Easier maintenance
 - Predictable initialization
 - Reduced duplicated code
-- Clear ownership of system state
+- Clear ownership
+- Reduced merge conflicts
+- Independent testing
+- Better scalalbility
 ```
 
 # Camera System
@@ -94,8 +97,6 @@ Responsibilities:
 # Camera Philosophy
 
 Rather than continuously following the player, the game is divided into fixed camera screens. Each screen represents a self-contained gameplay challenge. This design keeps platforming precise while allowing level design to control player visibility.
-
----
 
 # Camera Configuration
 
@@ -126,7 +127,33 @@ Each zone will define:
 - Visible Area
 ```
 
----
+# Movement Architecture
+
+Movement is implemented using a modular controller composed of specialized smaller systems each handling a single aspect of the player movement.
+
+Current responsibilities include:
+```
+input.luau
+- Keyboard input
+- Movement direction
+
+movement.luau
+- Horizontal movement
+- Velocity updates
+
+rotation.luau
+- Character facing
+
+grounding.luau
+- Ground detection
+
+states.luau
+- Movement state management
+
+jumping.luau
+- Jump charging
+- Jump execution
+```
 
 # Player
 
@@ -140,6 +167,8 @@ Reasons:
 - Retro visual style
 ```
 Future versions may replace the default R6 avatar with a custom StarterCharacter. (not probable though, custom avatars are cooler)
+
+---
 
 # Future Systems
 
