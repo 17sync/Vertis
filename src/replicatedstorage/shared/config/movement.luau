@@ -39,5 +39,18 @@ data={
     },
 
     -- Character
-    facingDirection=1
+    facingDirection=1,
+
+    -- Jumping
+    jumpSettings={
+        minJumpPower=25,
+        maxJumpPower=90,
+        maxChargeTime=1.2,
+        recoveryTime=0.15
+    },
+    jumpData={
+        charging=false,
+        chargeTime=0,
+        chargeAlpha=0
+    }
 }
