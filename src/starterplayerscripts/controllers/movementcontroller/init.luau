@@ -56,9 +56,9 @@ movementController.data={
 
     -- Jumping
     jumpSettings={
-        minJumpPower=100,
+        minJumpPower=35,
         maxJumpPower=150,
-        maxChargeTime=1.0,
+        maxChargeTime=0.85,
         recoveryTime=0.15,
         jumpAngle=55
     },
