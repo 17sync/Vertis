@@ -26,6 +26,40 @@ Built in Roblox Studio, this project aims to maintain a modular architecture wit
 
 ---
 
+# Project Structure
+The project follows a modular architecture using Rojo. Client and server logic are separated, while reusable code is organized into independent modules.
+```
+src
+├── replicatedstorage
+│   ├── assets
+│   ├── remotes
+│   ├── shared
+│   └── packages
+│
+├── serverscriptservice
+│   └── services
+│
+├── starterplayerscripts
+│   ├── bootstrap.client.luau
+│   └── controllers
+│       ├── cameracontroller.luau
+│       └── movementcontroller
+│           ├── init.luau
+│           ├── input.luau
+│           ├── movement.luau
+│           ├── rotation.luau
+│           ├── grounding.luau
+│           ├── states.luau
+│           └── jumping.luau
+│
+├── startercharacterscripts
+├── startergui
+├── replicatedfirst
+├── serverstorage
+└── soundservice
+```
+This tree is effected by architectural decisions and is ofcourse subject to change as I go deeper into development and signifies the current state of the progression.
+
 # Development Workflow
 My ideal workflow concept with this project:
 ```
