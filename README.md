@@ -18,6 +18,8 @@
 
 <!-- Description -->
 <div align="center">
-A precision platformer built in Roblox Studio, inspired by Jump King.
+<p>
+A precision platformer built in Roblox Studio, inspired by Jump King. <br>
 This project aims to maintain a modular architecture with extensive documentation and a Rojo-based workflow to allow the codebase to  be version controlled via Git and GitHub.
+</p>
 </div>
