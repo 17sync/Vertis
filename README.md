@@ -19,7 +19,28 @@
 <!-- Description -->
 <div align="center">
 <p>
-A precision platformer built in Roblox Studio, inspired by Jump King. <br>
-This project aims to maintain a modular architecture with extensive documentation and a Rojo-based workflow to allow the codebase to  be version controlled via Git and GitHub.
+A precision platformer inspired by Jump King. <br>
+Built in Roblox Studio, this project aims to maintain a modular architecture with extensive documentation and a Rojo-based workflow to allow the codebase to  be version controlled via Git and GitHub.
 </p>
 </div>
+
+---
+
+# Development Workflow
+My ideal workflow concept with this project:
+```
+Design Review
+↓
+Architecture Review
+↓
+Implementation
+↓
+Testing
+↓
+Update Documentation
+↓
+Git commit
+↓
+Push to GitHub
+```
+This workflow encourages incremental development while keeping the documentation synchronized with the actual implementation.
