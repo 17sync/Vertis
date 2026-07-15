@@ -33,7 +33,7 @@ src
 ├── serverstorage
 └── soundservice
 ```
-This folder tree ofcourse is subject to change as I go deeper into development and signifies the current state of the progression.
+This tree is effected by architectural decisions and is subject to change as I go deeper into development and signifies the current state of the progression.
 
 # Architecture Principles
 
