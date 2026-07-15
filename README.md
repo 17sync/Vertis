@@ -119,7 +119,7 @@ docs
 ├── design.md
 └── roadmap.md
 ```
-Though somewhat exhausting or boring, by maintaining these I am giving myself a clear vision of what I am trying to accomplish with this game each session.
+Though somewhat exhausting or outright boring at times, by maintaining these I am giving myself a clear vision of what I am trying to accomplish with this game each session.
 Take a look at them [here!](./docs)
 # Roadmap
 
