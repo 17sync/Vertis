@@ -9,17 +9,19 @@ function jumping:init(parent)
 end
 
 function jumping:performJump()
-    local jumpSettings=data.jumpSettings
-    local jumpData=data.jumpData
+	local jumpSettings=data.jumpSettings
+	local alpha=data.jumpData.chargeAlpha
 
-    local jumpPower=jumpSettings.minJumpPower + (jumpSettings.maxJumpPower - jumpSettings.minJumpPower) * jumpData.chargeAlpha
-    local angle=math.rad(jumpSettings.jumpAngle)
-    
-    local horizontal=math.cos(angle)*jumpPower
-    local vertical=math.sin(angle)*jumpPower
+	local horizontalVelocity=jumpSettings.minHorizontalSpeed +
+		(jumpSettings.maxHorizontalSpeed - jumpSettings.minHorizontalSpeed)*alpha
 
-    horizontal*=data.facingDirection
-    data.rootPart.AssemblyLinearVelocity=Vector3.new(horizontal, vertical, 0)
+	local verticalVelocity=jumpSettings.minVerticalSpeed +
+		(jumpSettings.maxVerticalSpeed - jumpSettings.minVerticalSpeed)*alpha
+
+	horizontalVelocity*=data.facingDirection
+
+	data.rootPart.AssemblyLinearVelocity=Vector3.new(horizontalVelocity, verticalVelocity, 0)
+    print("Applied velocity:", data.rootPart.AssemblyLinearVelocity)
 end
 
 function jumping:startCharging()
