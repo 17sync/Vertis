@@ -32,6 +32,50 @@ Vertis is a precision platformer inspired by Jump King. Built in Roblox Studio, 
 
 ---
 
+# Contents
+- [Features](#features)
+- [Player](#player)
+- [Architectural Principles](#architectural-principles)
+- [Project Structure](#project-structure)
+- [Roadmap](#roadmap)
+- [Development Workflow](#development-workflow)
+
+---
+
+# Features
+
+- **Precision Platforming:** Every jump is momentum-driven, rewarding careful timing and execution over fast reactions.
+- **Charge-Based Jumping:** Jump height and distance are determined by how long the jump is charged, creating a high skill ceiling.
+- **Fixed-Screen Camera:** Inspired by *Jump King*, each screen acts as a self-contained platforming challenge without distracting camera movement.
+- **2D Gameplay Plane:** Movement is restricted to a single plane, allowing precise and predictable platforming.
+- **Vertical Level Design:** Progression revolves around climbing through interconnected stages where every mistake carries weight.
+- **Skill-Based Gameplay:** There are no shortcuts or assists; progress comes from mastering the movement mechanics.
+
+# Player
+
+The game uses the R6 avatar type.
+
+Reasons:
+```
+- Consistent proportions
+- Easier animation
+- Simpler collision
+- Retro visual style
+```
+Future versions may replace the default R6 avatar with a custom StarterCharacter. (not probable though, custom avatars are cooler)
+
+# Architectural Principles
+
+The core principles of the project:
+```
+- Single Responsibility Principle
+- Modular systems
+- Client/Server separation
+- Data-driven configuration
+- Minimal code duplication
+```
+Each controller or service should have one clearly defined responsibility (loose coupling).
+
 # Project Structure
 The project follows a modular architecture using Rojo. Client and server logic are separated, while reusable code is organized into independent modules.
 ```
@@ -65,6 +109,54 @@ src
 └── soundservice
 ```
 This tree is effected by architectural decisions and is ofcourse subject to change as I go deeper into development and signifies the current state of the progression.
+
+# Roadmap
+
+## v0.1 — Core Prototype
+- [x] Core movement
+- [x] Jump charging
+- [x] Camera
+
+---
+
+## v0.2 - Improved Prototype
+- [ ] Animations for basic movement
+- [ ] Minimalistic power bar for jump charging
+- [ ] Animation for jumping
+- [ ] Animation for falling
+- [ ] Recovery animation
+
+---
+
+## v0.3 — Vertical Slice
+- [ ] Basic level layout
+- [ ] First 5 Levels
+- [ ] Simple menu UI
+- [ ] Loading Screens (optional)
+
+---
+
+## v0.4 — Game Systems
+- [ ] Audio
+- [ ] Progress Saving
+- [ ] Checkpoints
+- [ ] Particle effects (optional)
+
+---
+
+## v0.5 — World Building
+- [ ] Finish atleast 20 levels
+- [ ] Design biomes for each level or set of levels
+
+---
+
+## v0.6 - Release Candidate
+- [ ] Optimization
+- [ ] Playtesting
+- [ ] Bug fixing
+- [ ] Polish
+
+---
 
 # Development Workflow
 My ideal workflow concept with this project:
