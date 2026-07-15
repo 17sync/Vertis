@@ -56,13 +56,12 @@ movementController.data={
 
     -- Jumping
     jumpSettings={
-        minJumpPower=35,
-        maxJumpPower=150,
+        minHorizontalSpeed=75,
+        maxHorizontalSpeed=155,
+        minVerticalSpeed = 45,
+        maxVerticalSpeed = 120,
         maxChargeTime=0.85,
-        recoveryTime=0.15,
-        jumpAngle=55,
-        horizontalMultiplier=1.8,
-        verticalMultiplier=1.0
+        recoveryTime=0.15
     },
     jumpData={
         charging=false,
@@ -122,7 +121,7 @@ end
 
 -- main loop
 function movementController:update(dt)
-    self.modules.grounding:update()
+    self.modules.grounding:update(dt)
     self.modules.jumping:update(dt)
     self.modules.movement:updateMovement(dt)
     self.modules.rotation:updateRotation(dt)
