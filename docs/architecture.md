@@ -213,4 +213,6 @@ Planned gameplay systems include:
 ```
 
 ---
-<p style="text-align:center">Details are subject to change as development progresses!</p>
+<div align="center">
+Details are subject to change as development progresses!
+</div>
