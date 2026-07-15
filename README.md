@@ -37,6 +37,7 @@ Vertis is a precision platformer inspired by Jump King. Built in Roblox Studio, 
 - [Player](#player)
 - [Architectural Principles](#architectural-principles)
 - [Project Structure](#project-structure)
+- [Documentation](#documentation)
 - [Roadmap](#roadmap)
 - [Development Workflow](#development-workflow)
 
@@ -110,6 +111,16 @@ src
 ```
 This tree is effected by architectural decisions and is ofcourse subject to change as I go deeper into development and signifies the current state of the progression.
 
+# Documentation
+This project is not being built upon instinct but being engineered with extensive documentation in the form of markdown files:
+```
+docs
+├── architecture.md
+├── design.md
+└── roadmap.md
+```
+Though somewhat exhausting or boring, by maintaining these I am giving myself a clear vision of what I am trying to accomplish with this game each session.
+Take a look at them [here!](./docs)
 # Roadmap
 
 ## v0.1 — Core Prototype
