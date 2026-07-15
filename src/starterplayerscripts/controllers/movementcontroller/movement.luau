@@ -10,6 +10,14 @@ function movement:init(parent)
 end
 
 function movement:updateMovement(dt)
+    if math.abs(data.rootPart.AssemblyLinearVelocity.Y) > 1 then
+    return
+    end
+
+    if not data.grounded then
+        return
+    end
+
     if data.jumpData.charging then
         data.rootPart.AssemblyLinearVelocity=Vector3.new(0, data.rootPart.AssemblyLinearVelocity.Y, 0)
         return
