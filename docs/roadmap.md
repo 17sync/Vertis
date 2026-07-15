@@ -43,4 +43,6 @@
 - [ ] Polish
 
 ---
-<p style="text-align:center">Milestones subject to change and development progresses!</p>
+<div align="center">
+Milestones subject to change as development progresses!
+</div>
