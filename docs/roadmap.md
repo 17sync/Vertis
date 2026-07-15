@@ -36,7 +36,7 @@
 
 ---
 
-### v0.6 - Release Candidate
+## v0.6 - Release Candidate
 - [ ] Optimization
 - [ ] Playtesting
 - [ ] Bug fixing
