@@ -16,12 +16,18 @@
 <img src="https://github.com/rojo-rbx/rojo/blob/master/assets/brand_images/icon-32.png?raw=true" height="40" alt="Rojo icon"/>
 </div>
 
+<!-- Documentation Links -->
+<div align="center">
+<a href="docs/architecture.md">Architecture</a> |
+<a href="docs/design.md">Design</a> |
+<a href="docs/roadmap.md">Roadmap</a> 
+</div>
+
+---
+
 <!-- Description -->
 <div align="center">
-<p>
-A precision platformer inspired by Jump King. <br>
-Built in Roblox Studio, this project aims to maintain a modular architecture with extensive documentation and a Rojo-based workflow to allow the codebase to  be version controlled via Git and GitHub.
-</p>
+Vertis is a precision platformer inspired by Jump King. Built in Roblox Studio, this project aims to maintain a modular architecture with extensive documentation and a Rojo-based workflow to allow the codebase to  be version controlled via Git and GitHub.
 </div>
 
 ---
