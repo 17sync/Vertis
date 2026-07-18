@@ -1,4 +1,6 @@
 local userInputService=game:GetService("UserInputService")
+local states=require(script.Parent.states)
+
 local input={}
 
 local controller
@@ -18,9 +20,17 @@ function input:bindInput()
         if input.KeyCode==Enum.KeyCode.A then
             data.movementDirection.left=true
             data.facingDirection=1
+
+            if data.grounded then
+                    states:setState(data.states.walking)
+            end
         elseif input.KeyCode==Enum.KeyCode.D then
             data.movementDirection.right=true
             data.facingDirection=-1
+
+            if data.grounded then
+                    states:setState(data.states.walking)
+            end
         elseif input.KeyCode==Enum.KeyCode.Space then
             controller.modules.jumping:startCharging()
         end
@@ -29,8 +39,16 @@ function input:bindInput()
     userInputService.InputEnded:Connect(function(input)
         if input.KeyCode==Enum.KeyCode.A then
             data.movementDirection.left=false
+
+            if input:getMoveDirection() == 0 and data.grounded then
+	            states:setState(data.states.idle)
+            end
         elseif input.KeyCode==Enum.KeyCode.D then
             data.movementDirection.right=false
+            
+            if input:getMoveDirection() == 0 and data.grounded then
+	            states:setState(data.states.idle)
+            end
         elseif input.KeyCode==Enum.KeyCode.Space then
             controller.modules.jumping:releaseJump()
         end
