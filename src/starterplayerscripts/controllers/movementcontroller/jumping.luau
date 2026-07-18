@@ -1,3 +1,5 @@
+local states=require(script.Parent.states)
+
 local jumping={}
 
 local controller
@@ -27,10 +29,13 @@ end
 function jumping:startCharging()
     if not data.grounded then
         return
-    elseif data.jumpData.charging then
+    end
+    
+    if states:is(data.states.charging) then
         return
     end
 
+    states:setState(data.states.charging)
     data.jumpData.charging=true
     data.jumpData.chargeTime=0
     print("player started charging")
@@ -75,6 +80,7 @@ function jumping:releaseJump()
     jumpData.chargeAlpha = math.clamp(jumpData.chargeAlpha, 0, 1)
     print("released jump")
 
+    states:setState(data.states.jumping)
     self:performJump()
     self:resetCharge()
 end
