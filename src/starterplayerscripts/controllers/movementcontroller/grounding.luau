@@ -1,3 +1,5 @@
+local states=require(script.Parent.states)
+
 local grounding={}
 
 local controller
@@ -12,7 +14,21 @@ function grounding:update()
     local result=workspace:Raycast(data.rootPart.position,
     Vector3.new(0, -data.movementSettings.groundCheckDistance, 0))
 
-    data.grounded=result~=nil
+    local grounded=result~=nil
+
+    if grounded~=data.grounded then 
+        data.grounded=grounded
+
+        if grounded then
+                if states:is(data.states.jumping) or states:is(data.states.falling) then
+                    states:setState(data.states.landing)
+                end
+        else
+            if states:is(data.states.walking) or states:is(data.states.idle) or states:is(data.states.charging) then
+                states:setState(data.states.jumping)
+            end
+        end
+    end
 end
 
 return grounding
