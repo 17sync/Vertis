@@ -1,4 +1,6 @@
 local input=require(script.Parent.input)
+local states=require(script.Parent.states)
+
 local rotation={}
 
 local controller
@@ -10,7 +12,7 @@ function rotation:init(parent)
 end
 
 function rotation:updateRotation(dt)
-    if data.jumpData.charging then
+    if states:is(data.states.charging) then
         return 
     end
 
