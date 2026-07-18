@@ -1,4 +1,6 @@
 local input=require(script.Parent.input)
+local states=require(script.Parent.states)
+
 local movement={}
 
 local controller
@@ -10,24 +12,14 @@ function movement:init(parent)
 end
 
 function movement:updateMovement(dt)
-    if math.abs(data.rootPart.AssemblyLinearVelocity.Y) > 1 then
-    return
-    end
+    if not states:is(data.states.walking) and not states:is(data.states.idle) then
+		return
+	end
 
-    if not data.grounded then
-        return
-    end
+	local direction = input:getMoveDirection()
+	local velocity = data.rootPart.AssemblyLinearVelocity
 
-    if data.jumpData.charging then
-        data.rootPart.AssemblyLinearVelocity=Vector3.new(0, data.rootPart.AssemblyLinearVelocity.Y, 0)
-        return
-    end
-    
-    local root=data.rootPart
-    local velocity=root.AssemblyLinearVelocity
-    local direction=input:getMoveDirection()
-
-    root.AssemblyLinearVelocity=Vector3.new(direction*data.movementSettings.walkSpeed, velocity.Y, velocity.Z)
+	data.rootPart.AssemblyLinearVelocity = Vector3.new(direction*data.movementSettings.walkSpeed, velocity.Y, 0)
 end
 
 
