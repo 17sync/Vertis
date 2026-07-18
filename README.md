@@ -187,3 +187,7 @@ Git commit
 Push to GitHub
 ```
 This workflow encourages incremental development while keeping the documentation synchronized with the actual implementation.
+
+# License
+
+This project is licensed under the MIT License. Check the [LICENSE](./LICENSE) file for more information.
