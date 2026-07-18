@@ -123,8 +123,8 @@ end
 function movementController:update(dt)
     self.modules.grounding:update(dt)
     self.modules.jumping:update(dt)
-    self.modules.movement:updateMovement(dt)
     self.modules.rotation:updateRotation(dt)
+    self.modules.movement:updateMovement(dt)
 end
 
 return movementController
