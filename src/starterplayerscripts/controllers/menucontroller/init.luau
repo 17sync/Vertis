@@ -39,8 +39,29 @@ function menuController:getGUI()
     playButton=buttons:WaitForChild("playbutton")
 end
 
-function menuController:fadeObject(object, transperancy, duration)
-    
+function menuController:fadeObject(object, transparency, duration)
+    local property
+
+    if object:IsA("ImageLabel") or object:IsA("ImageButton") then
+        property="ImageTransparency"
+    elseif object:IsA("TextLabel") or object:IsA("TextButton") or object:IsA("TextBox") then
+        property="TextTransparency"
+    elseif object:IsA("Frame") then
+        property="BackgroundTransparency"
+    else
+        return
+    end
+
+    local tween=tweenService:Create(
+        object,
+        TweenInfo.new(duration, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+        {
+            [property]=transparency
+        }
+    )
+
+    tween:Play()
+    tween.Completed:Wait()
 end
 
 function menuController:playIntro()
