@@ -13,23 +13,24 @@ local logo=nil
 local buttons=nil
 local playButton=nil
 
-local introSettings = {
-    logoFade = 0.6,
-    playFade = 0.4,
-    logoDelay = 0.2
+local introSettings={
+    logoFade=2.0,
+    playFade=0.6,
+    logoDelay=3.5,
+    playDelay=1.2
 }
 
-local outroSettings = {
-    playFade = 0.25,
-    logoFade = 0.5,
-    backgroundFade = 0.8,
-    backgroundDelay = 0.15
+local outroSettings={
+    playFade=0.25,
+    logoFade=1.2,
+    backgroundFade=3.5,
+    backgroundDelay=0.2
 }
 
 function menuController:init()
     print("menuController initialized")
 
-    self:getGui()
+    self:getGUI()
     playButton.MouseButton1Click:Connect(function()
         self:playOutro()
     end)
@@ -71,8 +72,9 @@ function menuController:fadeObject(object, transparency, duration)
 end
 
 function menuController:playIntro()
-    self:fadeObject(logo, 0, introSettings.logoFade)
     task.wait(introSettings.logoDelay)
+    self:fadeObject(logo, 0, introSettings.logoFade)
+    task.wait(introSettings.playDelay)
     self:fadeObject(playButton, 0, introSettings.playFade)
 end
 
