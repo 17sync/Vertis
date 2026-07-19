@@ -8,22 +8,23 @@
 ## v0.2 - Improved Prototype
 - [ ] Animations for basic movement
 - [ ] Minimalistic power bar for jump charging
+- [ ] Simple menu UI
 - [ ] Animation for jumping
-- [ ] Animation for falling
-- [ ] Recovery animation
+- [ ] Background Ambience
 
 ---
 
 ## v0.3 — Vertical Slice
 - [ ] Basic level layout
 - [ ] First 5 Levels
-- [ ] Simple menu UI
+- [ ] Animation for falling
+- [ ] Recovery animation
 - [ ] Loading Screens (optional)
 
 ---
 
 ## v0.4 — Game Systems
-- [ ] Audio
+- [ ] Audio and Sound Effects
 - [ ] Progress Saving
 - [ ] Checkpoints
 - [ ] Particle effects (optional)
