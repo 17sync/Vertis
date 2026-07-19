@@ -9,5 +9,5 @@ local audioController=require(controllers.audiocontroller)
 
 cameraController:init()
 movementController:init()
-menucontroller:init()
 audioController:init()
+menucontroller:init()
