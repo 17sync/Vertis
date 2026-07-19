@@ -27,7 +27,13 @@ local outroSettings = {
 }
 
 function menuController:init()
+    print("menuController initialized")
 
+    self:getGui()
+    playButton.MouseButton1Click:Connect(function()
+        self:playOutro()
+    end)
+    self:playIntro()
 end
 
 function menuController:getGUI()
@@ -65,15 +71,24 @@ function menuController:fadeObject(object, transparency, duration)
 end
 
 function menuController:playIntro()
-    
+    self:fadeObject(logo, 0, introSettings.logoFade)
+    task.wait(introSettings.logoDelay)
+    self:fadeObject(playButton, 0, introSettings.playFade)
 end
 
 function menuController:playOutro()
+    playButton.Active=false
+    playButton.AutoButtonColor=false
 
+    self:fadeObject(playButton, 1, outroSettings.playFade)
+    self:fadeObject(logo, 1, outroSettings.logoFade)
+    task.wait(outroSettings.backgroundDelay)
+    self:fadeObject(background, 1, outroSettings.backgroundFade)
+    self:destroy()
 end
 
 function menuController:destroy()
-
+    mainMenu:Destroy()
 end
 
 return menuController
