@@ -8,7 +8,7 @@
 ## v0.2 - Improved Prototype
 - [ ] Animations for basic movement
 - [ ] Minimalistic power bar for jump charging
-- [ ] Simple menu UI
+- [x] Simple menu UI
 - [ ] Animation for jumping
 - [ ] Background Ambience
 
