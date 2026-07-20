@@ -12,14 +12,14 @@ function movement:init(parent)
 end
 
 function movement:updateMovement(dt)
-    if not states:is(data.states.walking) and not states:is(data.states.idle) then
-		return
-	end
+    local velocity = data.rootPart.AssemblyLinearVelocity
 
-	local direction=input:getMoveDirection()
-	local velocity=data.rootPart.AssemblyLinearVelocity
-
-	data.rootPart.AssemblyLinearVelocity = Vector3.new(direction*data.movementSettings.walkSpeed, velocity.Y, 0)
+    if states:is(data.states.walking) then
+        local direction = input:getMoveDirection()
+        data.rootPart.AssemblyLinearVelocity = Vector3.new(direction*data.movementSettings.walkSpeed, velocity.Y, 0)
+    elseif states:is(data.states.idle) then
+        data.rootPart.AssemblyLinearVelocity=Vector3.new(0, velocity.Y, 0)
+    end
 end
 
 
