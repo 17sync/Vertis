@@ -48,7 +48,7 @@ movementController.data={
     movementSettings={
         walkSpeed=12,
         rotationSpeed=12,
-        groundCheckDistance=3
+        groundCheckDistance=6
     },
 
     -- Character
