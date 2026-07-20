@@ -19,7 +19,7 @@ function states:setState(state)
 end
 
 function states:getState()
-    return data.currenState
+    return data.currentState
 end
 
 function states:is(state)
