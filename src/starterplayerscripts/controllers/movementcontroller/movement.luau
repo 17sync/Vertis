@@ -16,8 +16,8 @@ function movement:updateMovement(dt)
 		return
 	end
 
-	local direction = input:getMoveDirection()
-	local velocity = data.rootPart.AssemblyLinearVelocity
+	local direction=input:getMoveDirection()
+	local velocity=data.rootPart.AssemblyLinearVelocity
 
 	data.rootPart.AssemblyLinearVelocity = Vector3.new(direction*data.movementSettings.walkSpeed, velocity.Y, 0)
 end
