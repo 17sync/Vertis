@@ -14,13 +14,15 @@ function jumping:performJump()
 	local jumpSettings=data.jumpSettings
 	local alpha=data.jumpData.chargeAlpha
 
+    data.lockedDirection=data.facingDirection
+
 	local horizontalVelocity=jumpSettings.minHorizontalSpeed +
 		(jumpSettings.maxHorizontalSpeed - jumpSettings.minHorizontalSpeed)*alpha
 
 	local verticalVelocity=jumpSettings.minVerticalSpeed +
 		(jumpSettings.maxVerticalSpeed - jumpSettings.minVerticalSpeed)*alpha
 
-	horizontalVelocity*=data.facingDirection
+	horizontalVelocity*=data.lockedDirection
 
 	data.rootPart.AssemblyLinearVelocity=Vector3.new(horizontalVelocity, verticalVelocity, 0)
     print("Applied velocity:", data.rootPart.AssemblyLinearVelocity)
