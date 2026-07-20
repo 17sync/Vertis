@@ -1,4 +1,5 @@
 local states=require(script.Parent.states)
+local input=require(script.Parent.input)
 
 local jumping={}
 
@@ -14,33 +15,31 @@ function jumping:performJump()
 	local jumpSettings=data.jumpSettings
 	local alpha=data.jumpData.chargeAlpha
 
-    data.lockedDirection=data.facingDirection
-
 	local horizontalVelocity=jumpSettings.minHorizontalSpeed +
-		(jumpSettings.maxHorizontalSpeed - jumpSettings.minHorizontalSpeed)*alpha
+		(jumpSettings.maxHorizontalSpeed-jumpSettings.minHorizontalSpeed)*alpha
 
 	local verticalVelocity=jumpSettings.minVerticalSpeed +
-		(jumpSettings.maxVerticalSpeed - jumpSettings.minVerticalSpeed)*alpha
+		(jumpSettings.maxVerticalSpeed-jumpSettings.minVerticalSpeed)*alpha
 
-	horizontalVelocity*=data.lockedDirection
+	horizontalVelocity*=data.chargeDirection
 
 	data.rootPart.AssemblyLinearVelocity=Vector3.new(horizontalVelocity, verticalVelocity, 0)
-    print("Applied velocity:", data.rootPart.AssemblyLinearVelocity)
+
+    print("Jumping Direction:", data.chargeDirection)
 end
 
 function jumping:startCharging()
     if not data.grounded then
         return
     end
-    
     if states:is(data.states.charging) then
         return
     end
 
+    data.chargeDirection=input:getMoveDirection()
     states:setState(data.states.charging)
     data.jumpData.charging=true
     data.jumpData.chargeTime=0
-    print("player started charging")
 end
 
 function jumping:update(dt)
@@ -55,7 +54,6 @@ function jumping:update(dt)
 
     if jumpData.chargeTime>=jumpSettings.maxChargeTime then
         jumpData.chargeTime=jumpSettings.maxChargeTime
-        print(string.format("charge= %.2f", jumpData.chargeAlpha))
         jumpData.chargeAlpha=1
 
         self:releaseJump()
@@ -80,8 +78,7 @@ function jumping:releaseJump()
     
     local jumpData=data.jumpData
     jumpData.chargeAlpha = math.clamp(jumpData.chargeAlpha, 0, 1)
-    print("released jump")
-
+    
     states:setState(data.states.jumping)
     self:performJump()
     self:resetCharge()
