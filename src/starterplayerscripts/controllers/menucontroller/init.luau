@@ -12,16 +12,18 @@ local background=nil
 local logo=nil
 local buttons=nil
 local playButton=nil
+local settingsButton=nil
+local patchNotesButton=nil
 
 local introSettings={
     logoFade=2.0,
-    playFade=0.6,
+    buttonFade=0.6,
     logoDelay=3.5,
-    playDelay=1.2
+    buttonDelay=1.2
 }
 
 local outroSettings={
-    playFade=0.25,
+    buttonFade=0.25,
     logoFade=1.2,
     backgroundFade=3.5,
     backgroundDelay=0.2
@@ -44,6 +46,8 @@ function menuController:getGUI()
     logo=mainMenu:WaitForChild("vertislogo")
     buttons=mainMenu:WaitForChild("buttons")
     playButton=buttons:WaitForChild("playbutton")
+    settingsButton=buttons:WaitForChild("settingsbutton")
+    patchNotesButton=buttons:WaitForChild("patchnotesbutton")
 end
 
 function menuController:fadeObject(object, transparency, duration)
@@ -74,15 +78,19 @@ end
 function menuController:playIntro()
     task.wait(introSettings.logoDelay)
     self:fadeObject(logo, 0, introSettings.logoFade)
-    task.wait(introSettings.playDelay)
-    self:fadeObject(playButton, 0, introSettings.playFade)
+    task.wait(introSettings.buttonDelay)
+    self:fadeObject(playButton, 0, introSettings.buttonFade)
+    self:fadeObject(settingsButton, 0, introSettings.buttonFade)
+    self:fadeObject(patchNotesButton, 0, introSettings.buttonFade)
 end
 
 function menuController:playOutro()
     playButton.Active=false
     playButton.AutoButtonColor=false
 
-    self:fadeObject(playButton, 1, outroSettings.playFade)
+    self:fadeObject(playButton, 1, outroSettings.buttonFade)
+    self:fadeObject(settingsButton, 1, outroSettings.buttonFade)
+    self:fadeObject(patchNotesButton, 1, outroSettings.buttonFade)
     self:fadeObject(logo, 1, outroSettings.logoFade)
     task.wait(outroSettings.backgroundDelay)
     self:fadeObject(background, 1, outroSettings.backgroundFade)
