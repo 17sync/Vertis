@@ -11,24 +11,26 @@ function grounding:init(parent)
 end
 
 function grounding:update()
-    local wasGrounded=data.grounded
+    local wasGrounded = data.grounded
 
-    local result=workspace:Raycast(data.rootPart.Position,
-    Vector3.new(0, -data.movementSettings.groundCheckDistance, 0))
+    local params = RaycastParams.new()
+    params.FilterType = Enum.RaycastFilterType.Exclude
+    params.FilterDescendantsInstances = {data.character}
+
+    local result = workspace:Raycast(
+        data.rootPart.Position,
+        Vector3.new(0, -data.movementSettings.groundCheckDistance, 0),
+        params
+    )
 
     local grounded=result~=nil
-
-    if grounded and not wasGrounded then
-        data.lockedDirection=0
-    end
-
-    if grounded~=data.grounded then 
+    if grounded~=wasGrounded then
         data.grounded=grounded
-
         if grounded then
-                if states:is(data.states.jumping) or states:is(data.states.falling) then
-                    states:setState(data.states.landing)
-                end
+            data.chargeDirection=0
+            if states:is(data.states.jumping) or states:is(data.states.falling) then
+                states:setState(data.states.landing)
+            end
         else
             if states:is(data.states.walking) or states:is(data.states.idle) or states:is(data.states.charging) then
                 states:setState(data.states.jumping)
