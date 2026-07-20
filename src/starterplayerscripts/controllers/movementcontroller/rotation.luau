@@ -12,21 +12,24 @@ function rotation:init(parent)
 end
 
 function rotation:updateRotation(dt)
-    if data.grounded then
-        return
-    end
     if states:is(data.states.charging) then
         return 
+    end
+    if not data.grounded then
+        return
     end
 
     local direction=input:getMoveDirection()
     local targetYaw=nil
 
-    if direction==0 then return
+    if direction==0 then 
+        return
     end
 
-    if direction==1 then targetYaw=math.rad(-90)
-    else targetYaw=math.rad(90)
+    if direction==1 then 
+        targetYaw=math.rad(-90)
+    else 
+        targetYaw=math.rad(90)
     end
 
     local root=data.rootPart
