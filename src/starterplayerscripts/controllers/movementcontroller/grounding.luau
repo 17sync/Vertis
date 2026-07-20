@@ -11,10 +11,16 @@ function grounding:init(parent)
 end
 
 function grounding:update()
+    local wasGrounded=data.grounded
+
     local result=workspace:Raycast(data.rootPart.position,
     Vector3.new(0, -data.movementSettings.groundCheckDistance, 0))
 
     local grounded=result~=nil
+
+    if data.grounded and not wasGrounded then
+        data.lockedDirection=0
+    end
 
     if grounded~=data.grounded then 
         data.grounded=grounded
