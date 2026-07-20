@@ -4,7 +4,7 @@ local players=game:GetService("Players")
 local cameraController={}
 
 local visibleHeight=70
-local fieldOfView=30
+local fieldOfView=40
 local cameraTarget=Vector3.new(0, 0, 0)
 
 local localPlayer=players.LocalPlayer
