@@ -53,7 +53,7 @@ movementController.data={
 
     -- Character
     facingDirection=1,
-    lockedDirection=0,
+    chargeDirection=0,
 
     -- Jumping
     jumpSettings={
