@@ -93,16 +93,21 @@ src
 ├── starterplayerscripts
 │   ├── bootstrap.client.luau
 │   └── controllers
-│       ├── cameracontroller.luau
-│       └── movementcontroller
-│           ├── init.luau
-│           ├── input.luau
-│           ├── movement.luau
-│           ├── rotation.luau
-│           ├── grounding.luau
-│           ├── states.luau
-│           └── jumping.luau
-│
+│       ├── cameracontroller
+│       │   └── init.luau
+│       ├── movementcontroller
+│       │   ├── init.luau
+│       │   ├── input.luau
+│       │   ├── movement.luau
+│       │   ├── rotation.luau
+│       │   ├── grounding.luau
+│       │   ├── states.luau
+│       │   └── jumping.luau
+│       ├── menucontroller   
+│       │   └── init.luau
+│       └── audiocontroller
+│           └── init.luau
+│ 
 ├── startercharacterscripts
 ├── startergui
 ├── replicatedfirst
@@ -121,6 +126,7 @@ docs
 ```
 Though somewhat exhausting or outright boring at times, by maintaining these I am giving myself a clear vision of what I am trying to accomplish with this game each session.
 Take a look at them [here!](./docs)
+
 # Roadmap
 
 ## v0.1 — Core Prototype
@@ -133,22 +139,23 @@ Take a look at them [here!](./docs)
 ## v0.2 - Improved Prototype
 - [ ] Animations for basic movement
 - [ ] Minimalistic power bar for jump charging
+- [x] Simple menu UI
 - [ ] Animation for jumping
-- [ ] Animation for falling
-- [ ] Recovery animation
+- [ ] Background Ambience
 
 ---
 
 ## v0.3 — Vertical Slice
 - [ ] Basic level layout
 - [ ] First 5 Levels
-- [ ] Simple menu UI
+- [ ] Animation for falling
+- [ ] Recovery animation
 - [ ] Loading Screens (optional)
 
 ---
 
 ## v0.4 — Game Systems
-- [ ] Audio
+- [ ] Audio and Sound Effects
 - [ ] Progress Saving
 - [ ] Checkpoints
 - [ ] Particle effects (optional)
