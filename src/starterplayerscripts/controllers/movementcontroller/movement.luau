@@ -12,6 +12,10 @@ function movement:init(parent)
 end
 
 function movement:updateMovement(dt)
+    if not states:is(data.states.walking) then
+        return
+    end
+
     local velocity = data.rootPart.AssemblyLinearVelocity
 
     if states:is(data.states.walking) then
