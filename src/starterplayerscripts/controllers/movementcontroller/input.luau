@@ -26,15 +26,17 @@ function input:bindInput()
 
         if Input.KeyCode==Enum.KeyCode.A then
             data.movementDirection.left=true
-            data.facingDirection=1
-
+            if data.grounded then
+                data.facingDirection=1
+            end
             if data.grounded then
                     states:setState(data.states.walking)
             end
         elseif Input.KeyCode==Enum.KeyCode.D then
             data.movementDirection.right=true
-            data.facingDirection=-1
-
+            if data.grounded then
+                data.facingDirection=-1
+            end
             if data.grounded then
                     states:setState(data.states.walking)
             end
