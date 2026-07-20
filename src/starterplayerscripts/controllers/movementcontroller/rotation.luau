@@ -12,6 +12,9 @@ function rotation:init(parent)
 end
 
 function rotation:updateRotation(dt)
+    if data.grounded then
+        return
+    end
     if states:is(data.states.charging) then
         return 
     end
