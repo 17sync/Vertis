@@ -53,13 +53,14 @@ movementController.data={
 
     -- Character
     facingDirection=1,
+    lockedDirection=0,
 
     -- Jumping
     jumpSettings={
-        minHorizontalSpeed=75,
-        maxHorizontalSpeed=155,
-        minVerticalSpeed = 45,
-        maxVerticalSpeed = 120,
+        minHorizontalSpeed=45,
+        maxHorizontalSpeed=125,
+        minVerticalSpeed = 15,
+        maxVerticalSpeed = 90,
         maxChargeTime=0.85,
         recoveryTime=0.15
     },
