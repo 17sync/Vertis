@@ -6,7 +6,7 @@ audioController.background={
     windyAmbience=nil
 }
 
-audioController.sounds={
+audioController.movement={
     charge=nil,
     jump=nil,
     walk=nil,
