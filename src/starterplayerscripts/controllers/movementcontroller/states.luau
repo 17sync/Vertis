@@ -15,7 +15,7 @@ function states:setState(state)
     end
 
     data.currentState=state
-    print("State: ", state)
+    print("State:", state)
 end
 
 function states:getState()
