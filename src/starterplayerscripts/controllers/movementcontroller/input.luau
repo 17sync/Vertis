@@ -26,6 +26,7 @@ function input:bindInput()
 
         if Input.KeyCode==Enum.KeyCode.A then
             data.movementDirection.left=true
+            data.movementDirection.right=false
             if states:is(data.states.charging) then
                 data.chargeDirection=1
             else
@@ -36,6 +37,7 @@ function input:bindInput()
             end
         elseif Input.KeyCode==Enum.KeyCode.D then
             data.movementDirection.right=true
+            data.movementDirection.left=false
             if states:is(data.states.charging) then
                 data.chargeDirection=-1
             else
@@ -51,14 +53,20 @@ function input:bindInput()
 
     userInputService.InputEnded:Connect(function(Input)
         if Input.KeyCode==Enum.KeyCode.A then
-            data.movementDirection.left=false
-            if input:getMoveDirection()==0 and data.grounded then
-	            states:setState(data.states.idle)
+            if data.movementDirection.left then
+                data.movementDirection.left=false
+
+                if data.grounded then
+                    states:setState(data.states.idle)
+                end
             end
         elseif Input.KeyCode==Enum.KeyCode.D then
-            data.movementDirection.right=false
-            if input:getMoveDirection()==0 and data.grounded then
-	            states:setState(data.states.idle)
+            if data.movementDirection.right then
+                data.movementDirection.right=false
+
+                if data.grounded then
+                    states:setState(data.states.idle)
+                end
             end
         elseif Input.KeyCode==Enum.KeyCode.Space then
             controller.modules.jumping:releaseJump()
