@@ -11,13 +11,13 @@ function grounding:init(parent)
 end
 
 function grounding:update()
-    local wasGrounded = data.grounded
+    local wasGrounded=data.grounded
 
-    local params = RaycastParams.new()
-    params.FilterType = Enum.RaycastFilterType.Exclude
-    params.FilterDescendantsInstances = {data.character}
+    local params=RaycastParams.new()
+    params.FilterType=Enum.RaycastFilterType.Exclude
+    params.FilterDescendantsInstances={data.character}
 
-    local result = workspace:Raycast(
+    local result=workspace:Raycast(
         data.rootPart.Position,
         Vector3.new(0, -data.movementSettings.groundCheckDistance, 0),
         params
