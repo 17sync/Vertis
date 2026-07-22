@@ -93,21 +93,35 @@ src
 ├── starterplayerscripts
 │   ├── bootstrap.client.luau
 │   └── controllers
+│       ├── animationcontroller
+│       │   ├── init.luau
+│       │   ├── idle.luau
+│       │   ├── walk.luau
+│       │   ├── charge.luau
+│       │   └── jump.luau
+│       │
+│       ├── audiocontroller
+│       │   └── init.luau
+│       │
 │       ├── cameracontroller
 │       │   └── init.luau
+│       │
+│       ├── menucontroller
+│       │   └── init.luau
+│       │
 │       ├── movementcontroller
 │       │   ├── init.luau
+│       │   ├── grounding.luau
 │       │   ├── input.luau
+│       │   ├── jumping.luau
 │       │   ├── movement.luau
 │       │   ├── rotation.luau
-│       │   ├── grounding.luau
-│       │   ├── states.luau
-│       │   └── jumping.luau
-│       ├── menucontroller   
-│       │   └── init.luau
-│       └── audiocontroller
-│           └── init.luau
-│ 
+│       │   └── states.luau
+│       │
+│       └── visualcontroller
+│           ├── init.luau
+│           └── highlight.luau
+│
 ├── startercharacterscripts
 ├── startergui
 ├── replicatedfirst
