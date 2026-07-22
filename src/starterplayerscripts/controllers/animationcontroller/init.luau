@@ -3,7 +3,8 @@ local players=game:GetService("Players")
 local animationController={}
 
 animationController.modules={
-    walk=require(script.walk)
+    walk=require(script.walk),
+    charge=require(script.charge)
 }
 
 animationController.data={
@@ -21,10 +22,6 @@ function animationController:init()
     local data=self.data
 
     data.character=data.localPlayer.Character or data.localPlayer.CharacterAdded:Wait()
-    data.character:WaitForChild("Humanoid")
-    data.character:WaitForChild("HumanoidRootPart")
-
-
     data.humanoid=data.character:WaitForChild("Humanoid")
     data.animator=data.humanoid:FindFirstChildOfClass("Animator")
 
@@ -34,6 +31,7 @@ function animationController:init()
     end
 
     self.modules.walk:init(self)
+    self.modules.charge:init(self)
 
     print("animationcontroller initialized")
 end
@@ -48,6 +46,7 @@ end
 
 function animationController:update(currentState)
     self.modules.walk:update(currentState)
+    self.modules.charge:update(currentState)
 end
 
 return animationController
