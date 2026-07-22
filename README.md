@@ -137,11 +137,11 @@ Take a look at them [here!](./docs)
 ---
 
 ## v0.2 - Improved Prototype
-- [ ] Animations for basic movement
+- [x] Animations for basic movement
 - [ ] Minimalistic power bar for jump charging
 - [x] Simple menu UI
-- [ ] Animation for jumping
-- [ ] Background Ambience
+- [x] Animation for jumping
+- [x] Background Ambience
 
 ---
 
