@@ -145,32 +145,6 @@ Each zone will define:
 - Camera Target
 - Visible Area
 ```
-# Movement Architecture
-
-The Movement Controller is responsible for all player movement and state management. It is composed of specialized modules, each handling a single aspect of movement, resulting in a modular architecture where responsibilities remain isolated and easy to maintain.
-
-### Responsibilities
-
-- Process player input.
-- Handle horizontal movement and velocity updates.
-- Control character rotation and facing direction.
-- Detect ground contact and airborne states.
-- Manage movement state transitions.
-- Execute the jump charging and jumping systems.
-
-### Current Modules
-
-| Module | Responsibility |
-| ------- | -------------- |
-| `input.luau` | Handles keyboard input and movement direction. |
-| `movement.luau` | Controls horizontal movement and velocity updates. |
-| `rotation.luau` | Manages character facing and rotation. |
-| `grounding.luau` | Detects ground contact and airborne states. |
-| `states.luau` | Maintains and transitions between movement states. |
-| `jumping.luau` | Handles jump charging and jump execution. |
-
-The Movement Controller serves as the core gameplay system, coordinating these modules to produce responsive and deterministic player movement while keeping each component focused on a single responsibility.
-
 # Player
 
 The game uses the R6 avatar type.
@@ -184,18 +158,44 @@ Reasons:
 ```
 Future versions may replace the default R6 avatar with a custom StarterCharacter. (not probable though, custom avatars are cooler)
 
-# Animation Architecture
+# Movement Controller
+
+The Movement Controller is responsible for all player movement and state management. It is composed of specialized modules, each handling a single aspect of movement, resulting in a modular architecture where responsibilities remain isolated and easy to maintain.
+
+### Responsibilities
+```
+- Process player input.
+- Handle horizontal movement and velocity updates.
+- Control character rotation and facing direction.
+- Detect ground contact and airborne states.
+- Manage movement state transitions.
+- Execute the jump charging and jumping systems.
+```
+### Current Modules
+
+| Module | Responsibility |
+| ------- | -------------- |
+| `input.luau` | Handles keyboard input and movement direction. |
+| `movement.luau` | Controls horizontal movement and velocity updates. |
+| `rotation.luau` | Manages character facing and rotation. |
+| `grounding.luau` | Detects ground contact and airborne states. |
+| `states.luau` | Maintains and transitions between movement states. |
+| `jumping.luau` | Handles jump charging and jump execution. |
+
+The Movement Controller serves as the core gameplay system, coordinating these modules to produce responsive and deterministic player movement while keeping each component focused on a single responsibility.
+
+# Animation Controller
 
 The Animation Controller is responsible for managing all player animations independently of gameplay logic. It monitors the player's current movement state and plays, blends, or stops animations accordingly. Each animation is implemented as an individual module, allowing the system to remain modular, scalable, and easy to extend as new animations are introduced.
 
 ### Responsibilities
-
+```
 - Load and cache animation assets.
 - Manage animation tracks through a single `Animator`.
 - Update animations based on the player's current movement state.
 - Handle animation playback, looping, priorities, and transition blending.
 - Provide a modular framework for future animations.
-
+```
 ### Current Modules
 
 | Module | Responsibility |
@@ -209,17 +209,17 @@ The controller acts primarily as a coordinator, delegating animation behavior to
 
 ---
 
-# Visual Architecture
+# Visual Controller
 
 The Visual Controller is responsible for cosmetic visual effects that enhance player feedback without affecting gameplay. It centralizes presentation logic, ensuring visual features remain separate from movement, animation, and gameplay systems.
 
 ### Responsibilities
-
+```
 - Initialize player visual effects.
 - Manage character highlights and future cosmetic effects.
 - Separate presentation logic from gameplay systems.
 - Provide a centralized framework for future visual enhancements.
-
+```
 ### Current Modules
 
 | Module | Responsibility |
@@ -227,6 +227,45 @@ The Visual Controller is responsible for cosmetic visual effects that enhance pl
 | `highlight.luau` | Creates and manages the outline highlight applied to the player character. |
 
 The Visual Controller is designed to scale alongside the project. Future features such as particles, landing effects, screen shake, environmental effects, and other visual polish can be integrated without introducing dependencies into the core gameplay controllers.
+
+# Menu Controller
+
+The Menu Controller is responsible for managing the game's user interface before gameplay begins. It initializes the main menu, controls UI transitions, and coordinates the transition from the title screen into gameplay while remaining independent of the core gameplay systems.
+
+### Responsibilities
+```
+- Initialize the main menu interface.
+- Control menu animations and fade transitions.
+- Handle player interaction with the Play button.
+- Manage the transition from the title screen into gameplay.
+```
+### Current Modules
+
+| Module | Responsibility |
+| ------- | -------------- |
+| `init.luau` | Initializes the menu, manages UI animations, and handles menu interactions. |
+
+The Menu Controller is designed to remain lightweight while providing a centralized location for future interface features such as settings, credits, save selection, accessibility options, and additional menus.
+
+
+# Audio Controller
+
+The Audio Controller is responsible for managing the game's audio systems. It centralizes music and sound playback, providing a single point of control for audio while keeping sound logic separate from gameplay and presentation systems.
+
+### Responsibilities
+```
+- Initialize the game's audio system.
+- Control background music playback.
+- Manage sound effects.
+- Provide a centralized interface for future audio features.
+```
+### Current Modules
+
+| Module | Responsibility |
+| ------- | -------------- |
+| `init.luau` | Initializes the audio system and manages background music and sound playback. |
+
+The Audio Controller is designed to scale alongside the project. Future additions such as ambient audio, dynamic music, volume controls, audio zones, and contextual sound effects can be integrated without introducing dependencies into the gameplay controllers.
 
 ---
 
@@ -245,7 +284,6 @@ Planned gameplay systems include:
 ### UI
 ```
 - Power bar
-- Main menu
 - Loading screens
 ```
 
