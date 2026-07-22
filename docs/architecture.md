@@ -17,21 +17,35 @@ src
 ├── starterplayerscripts
 │   ├── bootstrap.client.luau
 │   └── controllers
+│       ├── animationcontroller
+│       │   ├── init.luau
+│       │   ├── idle.luau
+│       │   ├── walk.luau
+│       │   ├── charge.luau
+│       │   └── jump.luau
+│       │
+│       ├── audiocontroller
+│       │   └── init.luau
+│       │
 │       ├── cameracontroller
 │       │   └── init.luau
+│       │
+│       ├── menucontroller
+│       │   └── init.luau
+│       │
 │       ├── movementcontroller
 │       │   ├── init.luau
+│       │   ├── grounding.luau
 │       │   ├── input.luau
+│       │   ├── jumping.luau
 │       │   ├── movement.luau
 │       │   ├── rotation.luau
-│       │   ├── grounding.luau
-│       │   ├── states.luau
-│       │   └── jumping.luau
-│       ├── menucontroller   
-│       │   └── init.luau
-│       └── audiocontroller
-│           └── init.luau
-│ 
+│       │   └── states.luau
+│       │
+│       └── visualcontroller
+│           ├── init.luau
+│           └── highlight.luau
+│
 ├── startercharacterscripts
 ├── startergui
 ├── replicatedfirst
@@ -133,31 +147,29 @@ Each zone will define:
 ```
 # Movement Architecture
 
-Movement is implemented using a modular controller composed of specialized smaller systems each handling a single aspect of the player movement.
+The Movement Controller is responsible for all player movement and state management. It is composed of specialized modules, each handling a single aspect of movement, resulting in a modular architecture where responsibilities remain isolated and easy to maintain.
 
-Current responsibilities include:
-```
-input.luau
-- Keyboard input
-- Movement direction
+### Responsibilities
 
-movement.luau
-- Horizontal movement
-- Velocity updates
+- Process player input.
+- Handle horizontal movement and velocity updates.
+- Control character rotation and facing direction.
+- Detect ground contact and airborne states.
+- Manage movement state transitions.
+- Execute the jump charging and jumping systems.
 
-rotation.luau
-- Character facing
+### Current Modules
 
-grounding.luau
-- Ground detection
+| Module | Responsibility |
+| ------- | -------------- |
+| `input.luau` | Handles keyboard input and movement direction. |
+| `movement.luau` | Controls horizontal movement and velocity updates. |
+| `rotation.luau` | Manages character facing and rotation. |
+| `grounding.luau` | Detects ground contact and airborne states. |
+| `states.luau` | Maintains and transitions between movement states. |
+| `jumping.luau` | Handles jump charging and jump execution. |
 
-states.luau
-- Movement state management
-
-jumping.luau
-- Jump charging
-- Jump execution
-```
+The Movement Controller serves as the core gameplay system, coordinating these modules to produce responsive and deterministic player movement while keeping each component focused on a single responsibility.
 
 # Player
 
@@ -171,6 +183,50 @@ Reasons:
 - Retro visual style
 ```
 Future versions may replace the default R6 avatar with a custom StarterCharacter. (not probable though, custom avatars are cooler)
+
+# Animation Architecture
+
+The Animation Controller is responsible for managing all player animations independently of gameplay logic. It monitors the player's current movement state and plays, blends, or stops animations accordingly. Each animation is implemented as an individual module, allowing the system to remain modular, scalable, and easy to extend as new animations are introduced.
+
+### Responsibilities
+
+- Load and cache animation assets.
+- Manage animation tracks through a single `Animator`.
+- Update animations based on the player's current movement state.
+- Handle animation playback, looping, priorities, and transition blending.
+- Provide a modular framework for future animations.
+
+### Current Modules
+
+| Module | Responsibility |
+| ------- | -------------- |
+| `idle.luau` | Plays the idle animation while the player is standing still. |
+| `walk.luau` | Plays the walking animation during horizontal movement. |
+| `charge.luau` | Plays the jump charging animation while the player is preparing a jump. |
+| `jump.luau` | Plays the jump launch animation when the player leaves the ground. |
+
+The controller acts primarily as a coordinator, delegating animation behavior to the appropriate module based on the player's current state.
+
+---
+
+# Visual Architecture
+
+The Visual Controller is responsible for cosmetic visual effects that enhance player feedback without affecting gameplay. It centralizes presentation logic, ensuring visual features remain separate from movement, animation, and gameplay systems.
+
+### Responsibilities
+
+- Initialize player visual effects.
+- Manage character highlights and future cosmetic effects.
+- Separate presentation logic from gameplay systems.
+- Provide a centralized framework for future visual enhancements.
+
+### Current Modules
+
+| Module | Responsibility |
+| ------- | -------------- |
+| `highlight.luau` | Creates and manages the outline highlight applied to the player character. |
+
+The Visual Controller is designed to scale alongside the project. Future features such as particles, landing effects, screen shake, environmental effects, and other visual polish can be integrated without introducing dependencies into the core gameplay controllers.
 
 ---
 
