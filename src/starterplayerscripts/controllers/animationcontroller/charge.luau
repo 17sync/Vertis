@@ -11,9 +11,9 @@ function charge:init(parent)
 
     controller:loadAnimation("charge", chargeAnimId)
 
-    local track = data.tracks.charge
-    track.Looped = true
-    track.Priority = Enum.AnimationPriority.Action
+    local track=data.tracks.charge
+    track.Looped=true
+    track.Priority=Enum.AnimationPriority.Action
 end
 
 function charge:play()
