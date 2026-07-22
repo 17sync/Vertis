@@ -1,6 +1,7 @@
 local runService=game:GetService("RunService")
 local userInputService=game:GetService("UserInputService")
 local players=game:GetService("Players")
+local animationController=require(script.Parent.animationcontroller)
 
 local movementController={}
 
@@ -94,10 +95,6 @@ function movementController:init()
     self.modules.jumping:init(self)
 
     self.modules.input:bindInput()
-
-    runService.Heartbeat:Connect(function(dt)
-        self:update(dt)
-    end)
 end
 
 function movementController:createPlaneConstraint()
