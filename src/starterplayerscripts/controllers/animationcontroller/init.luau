@@ -5,7 +5,8 @@ local animationController={}
 animationController.modules={
     walk=require(script.walk),
     charge=require(script.charge),
-    idle=require(script.idle)
+    idle=require(script.idle),
+    jump=require(script.jump)
 }
 
 animationController.data={
@@ -34,6 +35,7 @@ function animationController:init()
     self.modules.idle:init(self)
     self.modules.walk:init(self)
     self.modules.charge:init(self)
+    self.modules.jump:init(self)
 
     print("animationcontroller initialized")
 end
@@ -50,6 +52,7 @@ function animationController:update(currentState)
     self.modules.idle:update(currentState)
     self.modules.walk:update(currentState)
     self.modules.charge:update(currentState)
+    self.modules.jump:update(currentState)
 end
 
 return animationController
