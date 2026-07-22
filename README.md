@@ -32,6 +32,13 @@ Vertis is a precision platformer inspired by Jump King. Built in Roblox Studio, 
 
 ---
 
+<!-- Gameplay -->
+<div align="center">
+<img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWVxbDJ6dnV4cmp0cnRobmt6eDhia3R6OXp1MWY3eXplaWtmOWkxYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/mDZAeAmXOAz5TumC8f/giphy.gif"/>
+</div>
+
+---
+
 # Contents
 - [Features](#features)
 - [Player](#player)
