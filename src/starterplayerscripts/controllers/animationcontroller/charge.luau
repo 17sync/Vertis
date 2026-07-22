@@ -3,7 +3,7 @@ local charge={}
 local controller
 local data
 
-local chargeAnimId="rbxassetid://"
+local chargeAnimId="rbxassetid://105205309644438"
 
 function charge:init(parent)
     controller=parent
