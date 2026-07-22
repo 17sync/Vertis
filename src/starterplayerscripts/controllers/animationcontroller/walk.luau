@@ -3,14 +3,13 @@ local walk={}
 local controller
 local data
 
-local walkAnimId="rbxassetid://"
+local walkAnimId="rbxassetid://96173130985061"
 
 function walk:init(parent)
-
     controller=parent
     data=parent.data
 
-    controller:loadAnimation("Walk", walkAnimId)
+    controller:loadAnimation("walk", walkAnimId)
 
     local walkTrack=data.tracks.walk
     walkTrack.Looped=true
@@ -28,7 +27,6 @@ function walk:play()
 end
 
 function walk:stop()
-
     local walkTrack=data.tracks.walk
 
     if not walkTrack.IsPlaying then
@@ -36,6 +34,14 @@ function walk:stop()
     end
 
     walkTrack:Stop(0.15)
+end
+
+function walk:update(currentState)
+    if currentState=="Walking" then
+        self:play()
+    else
+        self:stop()
+    end
 end
 
 return walk
