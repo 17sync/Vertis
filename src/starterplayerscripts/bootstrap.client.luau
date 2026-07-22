@@ -15,3 +15,8 @@ audioController:init()
 visualController:init()
 menuController:init()
 animationController:init()
+
+game:GetService("RunService").Heartbeat:Connect(function(dt)
+    movementController:update(dt)
+    animationController:update(movementController.data.currentState)
+end)
