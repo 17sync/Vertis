@@ -20,8 +20,12 @@ animationController.data={
 function animationController:init()
     local data=self.data
 
-    data.character=data.localPlayer.chracter or data.localPlayer.CharacterAdded:Wait()
-    data.humanoid=data.character.WaitForChild("Humanoid")
+    data.character=data.localPlayer.Character or data.localPlayer.CharacterAdded:Wait()
+    data.character:WaitForChild("Humanoid")
+    data.character:WaitForChild("HumanoidRootPart")
+
+
+    data.humanoid=data.character:WaitForChild("Humanoid")
     data.animator=data.humanoid:FindFirstChildOfClass("Animator")
 
     if not data.animator then
@@ -40,6 +44,10 @@ function animationController:loadAnimation(name, animationId)
 
     self.data.animations[name]=animation
     self.data.tracks[name]=self.data.animator:LoadAnimation(animation)
+end
+
+function animationController:update(currentState)
+    self.modules.walk:update(currentState)
 end
 
 return animationController
