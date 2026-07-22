@@ -4,7 +4,8 @@ local animationController={}
 
 animationController.modules={
     walk=require(script.walk),
-    charge=require(script.charge)
+    charge=require(script.charge),
+    idle=require(script.idle)
 }
 
 animationController.data={
@@ -30,6 +31,7 @@ function animationController:init()
         data.animator.Parent=data.humanoid
     end
 
+    self.modules.idle:init(self)
     self.modules.walk:init(self)
     self.modules.charge:init(self)
 
@@ -45,6 +47,7 @@ function animationController:loadAnimation(name, animationId)
 end
 
 function animationController:update(currentState)
+    self.modules.idle:update(currentState)
     self.modules.walk:update(currentState)
     self.modules.charge:update(currentState)
 end
